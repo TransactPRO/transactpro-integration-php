@@ -33,3 +33,14 @@ $ composer.phar install
 
 # Usage
 [UNDER CONSTRUCTION]
+
+# Testing
+If you wish to run tests, you need to install development dependencies:
+```
+$ composer.phar install --dev
+```
+
+And then you can run them with:
+```
+$ vendor/bin/phpunit
+```
