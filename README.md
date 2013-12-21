@@ -4,8 +4,11 @@ TransactPRO PHP integration
 
 # About
 Library provide ability to make requests to TransactPRO Gateway API.
+
 Library are supported by independent developers, and not by TransactPRO. So, submit all requests, issues and questions directly here (on GitHub).
+
 Library provided as is.
+
 You must adopt library for your projects by yourselves, we only provide basic functionality to make requests.
 
 # Installation
@@ -23,7 +26,7 @@ Add to your composer.json:
 }
 ```
 
-And then install
+And then install with:
 ```
 $ composer.phar install
 ```
