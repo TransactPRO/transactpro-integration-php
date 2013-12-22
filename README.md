@@ -2,8 +2,6 @@ TransactPRO PHP integration
 ===============
 [![Build Status](https://travis-ci.org/TransactPRO/integration-php.png?branch=master)](https://travis-ci.org/TransactPRO/integration-php)
 
-[TOC]
-
 # About
 **Author**: Dmitry Vrublevskis  
 **Contact**: d.vrublevskis@gmail.com
