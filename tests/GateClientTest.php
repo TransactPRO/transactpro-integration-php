@@ -39,7 +39,7 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
 
     public function testItCanBeInitializedWithCustomRequestExecutor()
     {
-        $gateClient = new GateClient($this->accessData, new BasicRequestExecutor());
+        $gateClient = new GateClient($this->accessData, new BasicRequestExecutor(''));
         $this->assertInstanceOf('TransactPRO\Gate\tests\Request\BasicRequestExecutor', $gateClient->getRequestExecutor());
     }
 

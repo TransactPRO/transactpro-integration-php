@@ -25,7 +25,7 @@ class GateClient
     {
         $accessDataBuilder     = new AccessDataBuilder($accessData);
         $this->accessData      = $accessDataBuilder->build();
-        $this->requestExecutor = $requestExecutor ? $requestExecutor : new RequestExecutor();
+        $this->requestExecutor = $requestExecutor ? $requestExecutor : new RequestExecutor($this->accessData['apiUrl']);
     }
 
     /**
