@@ -2,39 +2,22 @@
 
 namespace TransactPRO\Gate\Builders;
 
-use TransactPRO\Gate\Exceptions\MissingFieldException;
-
-class AccessDataBuilder implements BuilderInterface
+class AccessDataBuilder extends Builder
 {
-    /** @var array */
-    private $accessData;
-
-    function __construct(array $accessData)
-    {
-        $this->accessData = $accessData;
-        $this->checkMandatoryFields($accessData);
-    }
-
-    /**
-     * Build request data.
-     * @return array
-     */
     public function build()
     {
-        $buildAccessData = array(
-            'apiUrl'    => $this->accessData['apiUrl'],
-            'guid'      => $this->accessData['guid'],
-            'pwd'       => sha1($this->accessData['pwd']),
-            'verifySSL' => isset($this->accessData['verifySSL']) ? $this->accessData['verifySSL'] : true
+        return array(
+            'apiUrl'    => $this->data['apiUrl'],
+            'guid'      => $this->data['guid'],
+            'pwd'       => sha1($this->data['pwd']),
+            'verifySSL' => isset($this->data['verifySSL']) ? $this->data['verifySSL'] : true
         );
-
-        return $buildAccessData;
     }
 
-    private function checkMandatoryFields($accessData)
+    protected function checkData(array $data)
     {
-        if (!isset($accessData['apiUrl'])) throw new MissingFieldException;
-        if (!isset($accessData['guid'])) throw new MissingFieldException;
-        if (!isset($accessData['pwd'])) throw new MissingFieldException;
+        $this->checkMandatoryField($data, 'apiUrl');
+        $this->checkMandatoryField($data, 'guid');
+        $this->checkMandatoryField($data, 'pwd');
     }
 }

@@ -43,32 +43,22 @@ class AccessDataBuilderTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \TransactPRO\Gate\Exceptions\MissingFieldException
+     * @dataProvider getMandatoryFields
      */
-    public function testApiUrlFieldAreMandatory()
+    public function testMandatoryFields($field)
     {
         $accessData = $this->accessData;
-        unset($accessData['apiUrl']);
+        unset($accessData[$field]);
         new AccessDataBuilder($accessData);
     }
 
-    /**
-     * @expectedException \TransactPRO\Gate\Exceptions\MissingFieldException
-     */
-    public function testGuidFieldAreMandatory()
+    public function getMandatoryFields()
     {
-        $accessData = $this->accessData;
-        unset($accessData['guid']);
-        new AccessDataBuilder($accessData);
-    }
-
-    /**
-     * @expectedException \TransactPRO\Gate\Exceptions\MissingFieldException
-     */
-    public function testPwdFieldAreMandatory()
-    {
-        $accessData = $this->accessData;
-        unset($accessData['pwd']);
-        new AccessDataBuilder($accessData);
+        return array(
+            array('apiUrl'),
+            array('guid'),
+            array('pwd')
+        );
     }
 
     public function testVerifySslFieldAreOptional()
