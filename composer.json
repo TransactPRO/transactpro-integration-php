@@ -11,7 +11,10 @@
     ],
     "minimum-stability": "stable",
     "autoload": {
-        "psr-0": { "TransactPRO\\Gate\\": "lib" }
+        "psr-0": {
+            "TransactPRO\\Gate\\": "lib",
+            "TransactPRO\\Gate\\tests\\": "tests"
+        }
     },
     "target-dir": "TransactPRO/Gate",
     "require": {

@@ -4,24 +4,29 @@ namespace TransactPRO\Gate;
 
 use TransactPRO\Gate\Exceptions\NotImplementedAction;
 use TransactPRO\Gate\Builders\AccessDataBuilder;
+use TransactPRO\Gate\Request\RequestExecutor;
+use TransactPRO\Gate\Request\RequestExecutorInterface;
 
 /**
  * @package TransactPRO\Gate
  */
 class GateClient
 {
-    /**
-     * @var array
-     */
+    /** @var array */
     private $accessData;
+    /** @var RequestExecutorInterface */
+    private $requestExecutor;
+
 
     /**
      * @param array $accessData
+     * @param RequestExecutorInterface $requestExecutor
      */
-    function __construct(array $accessData)
+    function __construct(array $accessData, RequestExecutorInterface $requestExecutor = null)
     {
-        $accessDataBuilder = new AccessDataBuilder($accessData);
-        $this->accessData = $accessDataBuilder->build();
+        $accessDataBuilder     = new AccessDataBuilder($accessData);
+        $this->accessData      = $accessDataBuilder->build();
+        $this->requestExecutor = $requestExecutor ? $requestExecutor : new RequestExecutor();
     }
 
     /**
@@ -30,6 +35,14 @@ class GateClient
     public function getAccessData()
     {
         return $this->accessData;
+    }
+
+    /**
+     * @return RequestExecutorInterface
+     */
+    public function getRequestExecutor()
+    {
+        return $this->requestExecutor;
     }
 
     /**

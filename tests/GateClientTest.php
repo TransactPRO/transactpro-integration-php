@@ -3,6 +3,7 @@
 namespace TransactPRO\Gate\tests;
 
 use TransactPRO\Gate\GateClient;
+use TransactPRO\Gate\tests\Request\BasicRequestExecutor;
 
 class GateClientTest extends \PHPUnit_Framework_TestCase
 {
@@ -11,7 +12,7 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
     /** @var array */
     protected $accessData;
 
-    protected function setUp()
+    public function setUp()
     {
         $this->accessData = array(
             'apiUrl'    => 'https://www.payment-api.com',
@@ -28,6 +29,18 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
         $buildAccessData        = $this->accessData;
         $buildAccessData['pwd'] = sha1($this->accessData['pwd']);
         $this->assertEquals($buildAccessData, $this->gateClient->getAccessData());
+    }
+
+    public function testItCanBeInitializedWithDefaultRequestExecutor()
+    {
+        $gateClient = new GateClient($this->accessData);
+        $this->assertInstanceOf('TransactPRO\Gate\Request\RequestExecutor', $gateClient->getRequestExecutor());
+    }
+
+    public function testItCanBeInitializedWithCustomRequestExecutor()
+    {
+        $gateClient = new GateClient($this->accessData, new BasicRequestExecutor());
+        $this->assertInstanceOf('TransactPRO\Gate\tests\Request\BasicRequestExecutor', $gateClient->getRequestExecutor());
     }
 
     /**
