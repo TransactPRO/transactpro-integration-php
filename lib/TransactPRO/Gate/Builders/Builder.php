@@ -12,7 +12,7 @@ abstract class Builder
     final function __construct(array $data)
     {
         $this->data = $data;
-        $this->checkData($data);
+        $this->checkData();
     }
 
     /**
@@ -23,19 +23,17 @@ abstract class Builder
 
     /**
      * Run check on passed data.
-     * @param array $data
      */
-    abstract protected function checkData(array $data);
+    abstract protected function checkData();
 
     /**
      * Check field presence in array.
-     * @param array $data
      * @param string $field
      * @throws MissingFieldException
      */
-    protected function checkMandatoryField(array $data, $field)
+    protected function checkMandatoryField($field)
     {
-        if (!isset($data[$field])) throw new MissingFieldException("Field '$field' are mandatory.");
+        if (!isset($this->data[$field])) throw new MissingFieldException("Field '$field' are mandatory.");
     }
 
     protected function getField($fieldName, $defaultValue = '')

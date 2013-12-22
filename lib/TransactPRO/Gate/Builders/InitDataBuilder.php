@@ -28,19 +28,19 @@ class InitDataBuilder extends Builder
         );
     }
 
-    protected function checkData(array $data)
+    protected function checkData()
     {
-        $this->checkMandatoryField($data, 'rs');
-        $this->checkMandatoryField($data, 'merchant_transaction_id');
-        $this->checkMandatoryField($data, 'description');
-        $this->checkMandatoryField($data, 'amount');
-        $this->checkMandatoryField($data, 'currency');
-        $this->checkMandatoryField($data, 'name_on_card');
-        $this->checkMandatoryField($data, 'street');
-        $this->checkMandatoryField($data, 'zip');
-        $this->checkMandatoryField($data, 'city');
-        $this->checkMandatoryField($data, 'country');
-        $this->checkMandatoryField($data, 'phone');
-        $this->checkMandatoryField($data, 'merchant_site_url');
+        $this->checkMandatoryField('rs');
+        $this->checkMandatoryField('merchant_transaction_id');
+        $this->checkMandatoryField('description');
+        $this->checkMandatoryField('amount');
+        $this->checkMandatoryField('currency');
+        $this->checkMandatoryField('name_on_card');
+        $this->checkMandatoryField('street');
+        $this->checkMandatoryField('zip');
+        $this->checkMandatoryField('city');
+        $this->checkMandatoryField('country');
+        $this->checkMandatoryField('phone');
+        $this->checkMandatoryField('merchant_site_url');
     }
 }

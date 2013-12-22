@@ -14,10 +14,10 @@ class AccessDataBuilder extends Builder
         );
     }
 
-    protected function checkData(array $data)
+    protected function checkData()
     {
-        $this->checkMandatoryField($data, 'apiUrl');
-        $this->checkMandatoryField($data, 'guid');
-        $this->checkMandatoryField($data, 'pwd');
+        $this->checkMandatoryField('apiUrl');
+        $this->checkMandatoryField('guid');
+        $this->checkMandatoryField('pwd');
     }
 }
