@@ -4,7 +4,7 @@ namespace TransactPRO\Gate\tests\Builders;
 
 use TransactPRO\Gate\Builders\Builder;
 
-class BuilderTestCase extends \PHPUnit_Framework_TestCase
+abstract class BuilderTestCase extends \PHPUnit_Framework_TestCase
 {
     /** @var array */
     protected $data;
@@ -37,4 +37,30 @@ class BuilderTestCase extends \PHPUnit_Framework_TestCase
         $buildData = $builder->build();
         $this->assertEquals($expectedFieldValue, $buildData[$field]);
     }
+
+    public function testCanBuildSuccessfullyWithValidData()
+    {
+        $this->assertBuilderCanBeBuild();
+    }
+
+    /**
+     * @dataProvider getMandatoryFields
+     */
+    public function testMandatoryFields($field)
+    {
+        $this->assertMandatoryField($field);
+    }
+
+
+    abstract public function getMandatoryFields();
+
+    /**
+     * @dataProvider getNonMandatoryFields
+     */
+    public function testNonMandatoryFields($field, $expectedFieldValue)
+    {
+        $this->assertNonMandatoryField($field, $expectedFieldValue);
+    }
+
+    abstract public function getNonMandatoryFields();
 } 
