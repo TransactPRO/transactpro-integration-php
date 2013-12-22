@@ -2,25 +2,30 @@
 
 namespace TransactPRO\Gate\tests;
 
-use TransactPRO\Gate\Gate;
+use TransactPRO\Gate\GateClient;
 
-class GateTest extends \PHPUnit_Framework_TestCase
+class GateClientTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var Gate */
-    protected $gate;
+    /** @var GateClient */
+    protected $gateClient;
     /** @var array */
-    protected $merchantData;
+    protected $accessData;
 
     protected function setUp()
     {
-        $this->merchantData = array('guid' => 'AAAA-AAAA-AAAA-AAAA', 'pwd' => '111');
-        $this->gate         = new Gate($this->merchantData);
+        $this->accessData = array(
+            'apiUrl'    => 'https://www.payment-api.com',
+            'guid'      => 'AAAA-AAAA-AAAA-AAAA',
+            'pwd'       => '111',
+            'verifySSL' => false
+        );
+        $this->gateClient = new GateClient($this->accessData);
         parent::setUp();
     }
 
     public function testItCanBeInitializedWithValidMerchantDataWithoutError()
     {
-        $this->assertEquals($this->merchantData, $this->gate->getMerchantData());
+        $this->assertEquals($this->accessData, $this->gateClient->getAccessData());
     }
 
     /**
@@ -28,7 +33,7 @@ class GateTest extends \PHPUnit_Framework_TestCase
      */
     public function testInitAreNotImplemented()
     {
-        $this->gate->init();
+        $this->gateClient->init();
     }
 
     /**
@@ -36,7 +41,7 @@ class GateTest extends \PHPUnit_Framework_TestCase
      */
     public function testChargeAreNotImplemented()
     {
-        $this->gate->charge();
+        $this->gateClient->charge();
     }
 
     /**
@@ -44,7 +49,7 @@ class GateTest extends \PHPUnit_Framework_TestCase
      */
     public function testInitDmsAreNotImplemented()
     {
-        $this->gate->initDms();
+        $this->gateClient->initDms();
     }
 
     /**
@@ -52,7 +57,7 @@ class GateTest extends \PHPUnit_Framework_TestCase
      */
     public function testMakeHoldAreNotImplemented()
     {
-        $this->gate->makeHold();
+        $this->gateClient->makeHold();
     }
 
     /**
@@ -60,7 +65,7 @@ class GateTest extends \PHPUnit_Framework_TestCase
      */
     public function testChargeHoldAreNotImplemented()
     {
-        $this->gate->chargeHold();
+        $this->gateClient->chargeHold();
     }
 
     /**
@@ -68,7 +73,7 @@ class GateTest extends \PHPUnit_Framework_TestCase
      */
     public function testCancelDmsAreNotImplemented()
     {
-        $this->gate->cancelDms();
+        $this->gateClient->cancelDms();
     }
 
     /**
@@ -76,7 +81,7 @@ class GateTest extends \PHPUnit_Framework_TestCase
      */
     public function testRefundAreNotImplemented()
     {
-        $this->gate->refund();
+        $this->gateClient->refund();
     }
 
     /**
@@ -84,7 +89,7 @@ class GateTest extends \PHPUnit_Framework_TestCase
      */
     public function testStatusRequestAreNotImplemented()
     {
-        $this->gate->statusRequest();
+        $this->gateClient->statusRequest();
     }
 }
  

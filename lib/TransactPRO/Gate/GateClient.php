@@ -7,30 +7,27 @@ use TransactPRO\Gate\Exceptions\NotImplementedAction;
 /**
  * @package TransactPRO\Gate
  */
-class Gate
+class GateClient
 {
     /**
      * @var array
      */
-    private $merchantData;
+    private $accessData;
 
     /**
-     * @param array $merchantData <p>
-     * Merchant access data
-     * <code>array('guid' => '', 'pwd' => '');</code>
-     * </p>
+     * @param array $accessData
      */
-    function __construct(array $merchantData)
+    function __construct(array $accessData)
     {
-        $this->merchantData = $merchantData;
+        $this->accessData = $accessData;
     }
 
     /**
      * @return array
      */
-    public function getMerchantData()
+    public function getAccessData()
     {
-        return $this->merchantData;
+        return $this->accessData;
     }
 
     /**
