@@ -18,7 +18,7 @@ Recommended way of installation is through [composer](http://getcomposer.org/).
 Add to your composer.json:
 ```javascript
 "repositories": [
-    { "type": "git", "url": "https://github.com/TransactPRO/integration-php" }
+    { "type": "git", "url": "https://github.com/FylmTM/transactpro-integration-php.git" }
 ],
 "require": {
     "transact-pro/gate": "master",
