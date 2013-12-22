@@ -12,7 +12,7 @@ Library provided as is.
 You must adopt library for your projects by yourselves, we only provide basic functionality to make requests.  
 
 # Installation
-## Composer
+### Composer
 Recommended way of installation is through [composer](http://getcomposer.org/).  
 Add to your composer.json:
 ```javascript
