@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace TransactPRO\Gate\Exceptions;
 
