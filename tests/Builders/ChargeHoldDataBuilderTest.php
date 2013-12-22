@@ -20,7 +20,7 @@ class ChargeHoldDataBuilderTest extends BuilderTestCase
         );
     }
 
-    public function testNonMandatoryFields()
+    public function testNonMandatoryFields($field = false, $expectedFieldValue = false)
     {
     }
 

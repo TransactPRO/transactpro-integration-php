@@ -57,7 +57,7 @@ abstract class BuilderTestCase extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider getNonMandatoryFields
      */
-    public function testNonMandatoryFields($field, $expectedFieldValue)
+    public function testNonMandatoryFields($field = false, $expectedFieldValue = false)
     {
         $this->assertNonMandatoryField($field, $expectedFieldValue);
     }
