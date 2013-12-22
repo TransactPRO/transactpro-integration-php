@@ -3,6 +3,7 @@
 namespace TransactPRO\Gate;
 
 use TransactPRO\Gate\Exceptions\NotImplementedAction;
+use TransactPRO\Gate\Builders\AccessDataBuilder;
 
 /**
  * @package TransactPRO\Gate
@@ -19,7 +20,8 @@ class GateClient
      */
     function __construct(array $accessData)
     {
-        $this->accessData = $accessData;
+        $accessDataBuilder = new AccessDataBuilder($accessData);
+        $this->accessData = $accessDataBuilder->build();
     }
 
     /**

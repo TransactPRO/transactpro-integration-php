@@ -25,7 +25,9 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
 
     public function testItCanBeInitializedWithValidMerchantDataWithoutError()
     {
-        $this->assertEquals($this->accessData, $this->gateClient->getAccessData());
+        $buildAccessData        = $this->accessData;
+        $buildAccessData['pwd'] = sha1($this->accessData['pwd']);
+        $this->assertEquals($buildAccessData, $this->gateClient->getAccessData());
     }
 
     /**
