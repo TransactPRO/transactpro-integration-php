@@ -17,7 +17,6 @@ class GateClient
     /** @var RequestExecutorInterface */
     private $requestExecutor;
 
-
     /**
      * @param array $accessData
      * @param RequestExecutorInterface $requestExecutor

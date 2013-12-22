@@ -15,6 +15,6 @@ class BasicRequestExecutor implements RequestExecutorInterface
      */
     public function executeRequest($url, $action, array $postData)
     {
-        return new Response();
+        return new Response(Response::STATUS_ERROR, 'NotImplemented');
     }
 }
