@@ -6,9 +6,9 @@ class InitDataBuilderTest extends BuilderTestCase
 {
     public function setUp()
     {
-        $_SERVER['REMOTE_ADDR']  = '127.0.0.1';
-        $this->builderClass      = 'TransactPRO\Gate\Builders\InitDataBuilder';
-        $this->data              = array(
+        $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
+        $this->builderClass     = 'TransactPRO\Gate\Builders\InitDataBuilder';
+        $this->data             = array(
             'rs'                      => 'AAAA',
             'merchant_transaction_id' => microtime(true),
             'user_ip'                 => '127.0.0.1',
@@ -28,7 +28,7 @@ class InitDataBuilderTest extends BuilderTestCase
             'bin_phone'               => '+371 11111111',
             'merchant_site_url'       => 'http://www.example.com'
         );
-        $this->buildData         = $this->data;
+        $this->buildData        = $this->data;
     }
 
     public function getMandatoryFields()
