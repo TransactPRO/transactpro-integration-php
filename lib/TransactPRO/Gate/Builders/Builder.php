@@ -37,4 +37,9 @@ abstract class Builder
     {
         if (!isset($data[$field])) throw new MissingFieldException("Field '$field' are mandatory.");
     }
+
+    protected function getField($fieldName, $defaultValue = '')
+    {
+        return isset($this->data[$fieldName]) ? $this->data[$fieldName] : $defaultValue;
+    }
 } 

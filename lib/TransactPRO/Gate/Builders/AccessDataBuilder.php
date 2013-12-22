@@ -7,10 +7,10 @@ class AccessDataBuilder extends Builder
     public function build()
     {
         return array(
-            'apiUrl'    => $this->data['apiUrl'],
-            'guid'      => $this->data['guid'],
-            'pwd'       => sha1($this->data['pwd']),
-            'verifySSL' => isset($this->data['verifySSL']) ? $this->data['verifySSL'] : true
+            'apiUrl'    => $this->getField('apiUrl'),
+            'guid'      => $this->getField('guid'),
+            'pwd'       => sha1($this->getField('pwd')),
+            'verifySSL' => $this->getField('verifySSL', true)
         );
     }
 
