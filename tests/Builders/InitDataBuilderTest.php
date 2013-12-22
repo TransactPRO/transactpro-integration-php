@@ -4,18 +4,14 @@ namespace TransactPRO\Gate\tests\Builders;
 
 use TransactPRO\Gate\Builders\InitDataBuilder;
 
-class InitDataBuilderTest extends \PHPUnit_Framework_TestCase
+class InitDataBuilderTest extends BuilderTestCase
 {
-    /** @var array */
-    private $initData;
-    /** @var array */
-    private $buildInitData;
-
     public function setUp()
     {
         $_SERVER['REMOTE_ADDR']  = '127.0.0.1';
         $merchant_transaction_id = microtime(true);
-        $this->initData          = array(
+        $this->builderClass = 'TransactPRO\Gate\Builders\InitDataBuilder';
+        $this->data              = array(
             'rs'                      => 'AAAA',
             'merchant_transaction_id' => $merchant_transaction_id,
             'user_ip'                 => '127.0.0.1',
@@ -35,7 +31,7 @@ class InitDataBuilderTest extends \PHPUnit_Framework_TestCase
             'bin_phone'               => '+371 11111111',
             'merchant_site_url'       => 'http://www.example.com'
         );
-        $this->buildInitData     = array(
+        $this->buildData         = array(
             'rs'                      => 'AAAA',
             'merchant_transaction_id' => $merchant_transaction_id,
             'user_ip'                 => '127.0.0.1',
@@ -59,19 +55,15 @@ class InitDataBuilderTest extends \PHPUnit_Framework_TestCase
 
     public function testCanBuildSuccessfullyWithValidData()
     {
-        $builder = new InitDataBuilder($this->initData);
-        $this->assertEquals($this->buildInitData, $builder->build());
+        $this->assertBuilderCanBeBuild();
     }
 
     /**
-     * @expectedException \TransactPRO\Gate\Exceptions\MissingFieldException
      * @dataProvider getMandatoryFields
      */
     public function testMandatoryFields($field)
     {
-        $initData = $this->initData;
-        unset($initData[$field]);
-        new InitDataBuilder($initData);
+        $this->assertMandatoryField($field);
     }
 
     public function getMandatoryFields()
@@ -97,11 +89,7 @@ class InitDataBuilderTest extends \PHPUnit_Framework_TestCase
      */
     public function testNonMandatoryFields($field, $expectedFieldValue)
     {
-        $initData = $this->initData;
-        unset($initData[$field]);
-        $builder       = new InitDataBuilder($initData);
-        $buildInitData = $builder->build();
-        $this->assertEquals($expectedFieldValue, $buildInitData[$field]);
+        $this->assertNonMandatoryField($field, $expectedFieldValue);
     }
 
     public function getNonMandatoryFields()

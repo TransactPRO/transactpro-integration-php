@@ -3,24 +3,19 @@
 namespace TransactPRO\Gate\tests\Builders;
 
 use TransactPRO\Gate\Builders\AccessDataBuilder;
-use TransactPRO\Gate\Exceptions\MissingFieldException;
 
-class AccessDataBuilderTest extends \PHPUnit_Framework_TestCase
+class AccessDataBuilderTest extends BuilderTestCase
 {
-    /** @var array */
-    private $accessData;
-    /** @var array */
-    private $buildAccessData;
-
     public function setUp()
     {
-        $this->accessData      = array(
+        $this->builderClass = 'TransactPRO\Gate\Builders\AccessDataBuilder';
+        $this->data      = array(
             'apiUrl'    => 'https://www.payment-api.com',
             'guid'      => 'AAAA-AAAA-AAAA-AAAA',
             'pwd'       => '111',
             'verifySSL' => true
         );
-        $this->buildAccessData = array(
+        $this->buildData = array(
             'apiUrl'    => 'https://www.payment-api.com',
             'guid'      => 'AAAA-AAAA-AAAA-AAAA',
             'pwd'       => sha1('111'),
@@ -30,26 +25,22 @@ class AccessDataBuilderTest extends \PHPUnit_Framework_TestCase
 
     public function testCanBuildSuccessfullyWithValidData()
     {
-        $builder = new AccessDataBuilder($this->accessData);
-        $this->assertEquals($this->buildAccessData, $builder->build());
+        $this->assertBuilderCanBeBuild();
     }
 
     public function testEncryptPasswordWithSHA1()
     {
-        $builder         = new AccessDataBuilder($this->accessData);
+        $builder         = new AccessDataBuilder($this->data);
         $buildAccessData = $builder->build();
-        $this->assertEquals($this->buildAccessData['pwd'], $buildAccessData['pwd']);
+        $this->assertEquals($this->buildData['pwd'], $buildAccessData['pwd']);
     }
 
     /**
-     * @expectedException \TransactPRO\Gate\Exceptions\MissingFieldException
      * @dataProvider getMandatoryFields
      */
     public function testMandatoryFields($field)
     {
-        $accessData = $this->accessData;
-        unset($accessData[$field]);
-        new AccessDataBuilder($accessData);
+        $this->assertMandatoryField($field);
     }
 
     public function getMandatoryFields()
@@ -61,13 +52,19 @@ class AccessDataBuilderTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testVerifySslFieldAreOptional()
+    /**
+     * @dataProvider getNonMandatoryFields
+     */
+    public function testNonMandatoryFields($field, $expectedFieldValue)
     {
-        $accessData = $this->accessData;
-        unset($accessData['verifySSL']);
-        $builder = new AccessDataBuilder($accessData);
+        $this->assertNonMandatoryField($field, $expectedFieldValue);
+    }
 
-        $this->assertEquals($this->buildAccessData, $builder->build());
+    public function getNonMandatoryFields()
+    {
+        return array(
+            array('verifySSL', true),
+        );
     }
 }
  
