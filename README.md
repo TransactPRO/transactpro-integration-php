@@ -8,7 +8,7 @@ TransactPRO PHP integration
 **Contact**: d.vrublevskis@gmail.com
 
 Library provide ability to make requests to TransactPRO Gateway API.  
-Library are supported by me, and not by TransactPRO. So, submit all requests, issues and questions directly here (on GitHub).  
+Library are supported by me, and not by TransactPRO. So, submit all requests, issues and questions directly here (on GitHub).
 Library provided as is.  
 You must adopt library for your projects by yourselves, I only provide basic functionality to make requests.
 
@@ -62,6 +62,8 @@ $gateClient = new GateClient(array(
 ));
 
 ```
+
+[ UNDER CONSTRUCTION ]
 
 # Tests
 If you wish to run tests, you need to install development dependencies:
