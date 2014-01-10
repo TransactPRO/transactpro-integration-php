@@ -162,7 +162,7 @@ $response = $gateClient->refund(array(
 
 #### Status request
 ```php
-$response = $this->gateClient->statusRequest(array(
+$response = $gateClient->statusRequest(array(
     'request_type'        => 'transaction_status',
     'init_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
     'f_extended'          => '5'
