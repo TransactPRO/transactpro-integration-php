@@ -2,6 +2,7 @@
 
 namespace TransactPRO\Gate;
 
+use TransactPRO\Gate\Builders\Builder;
 use TransactPRO\Gate\Builders\CancelDmsDataBuilder;
 use TransactPRO\Gate\Builders\ChargeDataBuilder;
 use TransactPRO\Gate\Builders\ChargeHoldDataBuilder;
@@ -54,65 +55,74 @@ class GateClient
 
     public function init(array $data)
     {
-        $dataBuilder = new InitDataBuilder($data);
-        $response    = $this->requestExecutor->executeRequest('init', $dataBuilder->build());
+        $buildData = $this->buildData(new InitDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('init', $buildData);
 
         return $response;
     }
 
     public function charge(array $data)
     {
-        $dataBuilder = new ChargeDataBuilder($data);
-        $response    = $this->requestExecutor->executeRequest('charge', $dataBuilder->build());
+        $buildData = $this->buildData(new ChargeDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('charge', $buildData);
 
         return $response;
     }
 
     public function initDms(array $data)
     {
-        $dataBuilder = new InitDmsDataBuilder($data);
-        $response    = $this->requestExecutor->executeRequest('init_dms', $dataBuilder->build());
+        $buildData = $this->buildData(new InitDmsDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('init_dms', $buildData);
 
         return $response;
     }
 
     public function makeHold(array $data)
     {
-        $dataBuilder = new MakeHoldDataBuilder($data);
-        $response    = $this->requestExecutor->executeRequest('make_hold', $dataBuilder->build());
+        $buildData = $this->buildData(new MakeHoldDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('make_hold', $buildData);
 
         return $response;
     }
 
     public function chargeHold(array $data)
     {
-        $dataBuilder = new ChargeHoldDataBuilder($data);
-        $response    = $this->requestExecutor->executeRequest('charge_hold', $dataBuilder->build());
+        $buildData = $this->buildData(new ChargeHoldDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('charge_hold', $buildData);
 
         return $response;
     }
 
     public function cancelDms(array $data)
     {
-        $dataBuilder = new CancelDmsDataBuilder($data);
-        $response    = $this->requestExecutor->executeRequest('cancel_dms', $dataBuilder->build());
+        $buildData = $this->buildData(new CancelDmsDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('cancel_dms', $buildData);
 
         return $response;
     }
 
     public function refund(array $data)
     {
-        $dataBuilder = new RefundDataBuilder($data);
-        $response    = $this->requestExecutor->executeRequest('refund', $dataBuilder->build());
+        $buildData = $this->buildData(new RefundDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('refund', $buildData);
 
         return $response;
     }
 
     public function statusRequest(array $data)
     {
-        $dataBuilder = new StatusRequestDataBuilder($data);
-        $response    = $this->requestExecutor->executeRequest('status_request', $dataBuilder->build());
+        $buildData = $this->buildData(new StatusRequestDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('status_request', $buildData);
 
         return $response;
+    }
+
+    private function buildData(Builder $builder)
+    {
+        $buildData         = $builder->build();
+        $buildData['guid'] = $this->accessData['guid'];
+        $buildData['pwd']  = $this->accessData['pwd'];
+
+        return $buildData;
     }
 } 
