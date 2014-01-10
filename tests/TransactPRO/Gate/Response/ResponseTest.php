@@ -1,6 +1,6 @@
 <?php
 
-namespace TransactPRO\Gate\tests\Response;
+namespace tests\TransactPRO\Gate\Response;
 
 use TransactPRO\Gate\Response\Response;
 

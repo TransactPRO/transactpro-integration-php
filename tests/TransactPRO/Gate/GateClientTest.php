@@ -1,10 +1,10 @@
 <?php
 
-namespace TransactPRO\Gate\tests;
+namespace tests\TransactPRO\Gate;
 
 use TransactPRO\Gate\GateClient;
 use TransactPRO\Gate\Response\Response;
-use TransactPRO\Gate\tests\Request\BasicRequestExecutor;
+use tests\TransactPRO\Gate\Request\BasicRequestExecutor;
 
 class GateClientTest extends \PHPUnit_Framework_TestCase
 {
@@ -41,7 +41,7 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
     public function testItCanBeInitializedWithCustomRequestExecutor()
     {
         $gateClient = new GateClient($this->accessData, new BasicRequestExecutor('', false));
-        $this->assertInstanceOf('TransactPRO\Gate\tests\Request\BasicRequestExecutor', $gateClient->getRequestExecutor());
+        $this->assertInstanceOf('tests\TransactPRO\Gate\Request\BasicRequestExecutor', $gateClient->getRequestExecutor());
     }
 
     public function testInit()

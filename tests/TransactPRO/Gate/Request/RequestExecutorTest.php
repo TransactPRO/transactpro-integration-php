@@ -1,6 +1,6 @@
 <?php
 
-namespace TransactPRO\Gate\tests\Request;
+namespace tests\TransactPRO\Gate\Request;
 
 use TransactPRO\Gate\Request\RequestExecutor;
 

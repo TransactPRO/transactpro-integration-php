@@ -1,6 +1,6 @@
 <?php
 
-namespace TransactPRO\Gate\tests\Builders;
+namespace tests\TransactPRO\Gate\Builders;
 
 class StatusRequestDataBuilderTest extends BuilderTestCase
 {
