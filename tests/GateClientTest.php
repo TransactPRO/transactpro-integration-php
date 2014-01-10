@@ -154,6 +154,9 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
         $this->assertUnsuccessfulResponse($response);
     }
 
+    /**
+     * @param Response $response
+     */
     private function assertUnsuccessfulResponse($response)
     {
         $this->assertInstanceOf('TransactPRO\Gate\Response\Response', $response, 'Result must be instance of TransactPRO\Gate\Response\Response class.');
