@@ -15,7 +15,7 @@ class RequestExecutor implements RequestExecutorInterface
      * @param string $url Gateway url
      * @param bool $verifySSL
      */
-    public function __construct($url, $verifySSL)
+    public function __construct($url, $verifySSL = false)
     {
         $this->url       = $url;
         $this->verifySSL = $verifySSL;
