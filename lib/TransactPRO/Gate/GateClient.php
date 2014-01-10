@@ -11,7 +11,6 @@ use TransactPRO\Gate\Builders\InitDmsDataBuilder;
 use TransactPRO\Gate\Builders\MakeHoldDataBuilder;
 use TransactPRO\Gate\Builders\RefundDataBuilder;
 use TransactPRO\Gate\Builders\StatusRequestDataBuilder;
-use TransactPRO\Gate\Exceptions\NotImplementedAction;
 use TransactPRO\Gate\Builders\AccessDataBuilder;
 use TransactPRO\Gate\Request\RequestExecutor;
 use TransactPRO\Gate\Request\RequestExecutorInterface;
