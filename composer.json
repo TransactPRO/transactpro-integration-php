@@ -16,7 +16,6 @@
             "TransactPRO\\Gate\\tests\\": "tests"
         }
     },
-    "target-dir": "TransactPRO/Gate",
     "require": {
     },
     "require-dev": {
