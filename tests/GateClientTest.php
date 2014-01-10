@@ -3,6 +3,7 @@
 namespace TransactPRO\Gate\tests;
 
 use TransactPRO\Gate\GateClient;
+use TransactPRO\Gate\Response\Response;
 use TransactPRO\Gate\tests\Request\BasicRequestExecutor;
 
 class GateClientTest extends \PHPUnit_Framework_TestCase
@@ -43,12 +44,29 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('TransactPRO\Gate\tests\Request\BasicRequestExecutor', $gateClient->getRequestExecutor());
     }
 
-    /**
-     * @expectedException \TransactPRO\Gate\Exceptions\NotImplementedAction
-     */
-    public function testInitAreNotImplemented()
+    public function testInit()
     {
-        $this->gateClient->init();
+        $response = $this->gateClient->init(array(
+            'rs'                      => 'AAAA',
+            'merchant_transaction_id' => microtime(true),
+            'user_ip'                 => '127.0.0.1',
+            'description'             => 'Test description',
+            'amount'                  => '100',
+            'currency'                => 'LVL',
+            'name_on_card'            => 'Vasyly Pupkin',
+            'street'                  => 'Main street 1',
+            'zip'                     => 'LV-0000',
+            'city'                    => 'Riga',
+            'country'                 => 'LV',
+            'state'                   => 'NA',
+            'email'                   => 'email@example.lv',
+            'phone'                   => '+371 11111111',
+            'card_bin'                => '511111',
+            'bin_name'                => 'BANK',
+            'bin_phone'               => '+371 11111111',
+            'merchant_site_url'       => 'http://www.example.com'
+        ));
+        $this->assertUnsuccessfulResponse($response);
     }
 
     /**
@@ -105,6 +123,16 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
     public function testStatusRequestAreNotImplemented()
     {
         $this->gateClient->statusRequest();
+    }
+
+    /**
+     * @param Response $response
+     */
+    private function assertUnsuccessfulResponse($response)
+    {
+        $this->assertInstanceOf('TransactPRO\Gate\Response\Response', $response, 'Result must be instance of TransactPRO\Gate\Response\Response class.');
+        $this->assertFalse($response->isSuccessful(), 'Response must be unsuccessful');
+        $this->assertEquals("Couldn't resolve host 'www.payment-api.com'", $response->getResponseContent());
     }
 }
  

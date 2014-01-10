@@ -2,6 +2,7 @@
 
 namespace TransactPRO\Gate;
 
+use TransactPRO\Gate\Builders\InitDataBuilder;
 use TransactPRO\Gate\Exceptions\NotImplementedAction;
 use TransactPRO\Gate\Builders\AccessDataBuilder;
 use TransactPRO\Gate\Request\RequestExecutor;
@@ -44,12 +45,12 @@ class GateClient
         return $this->requestExecutor;
     }
 
-    /**
-     * @throws Exceptions\NotImplementedAction
-     */
-    public function init()
+    public function init(array $data)
     {
-        throw new NotImplementedAction();
+        $dataBuilder = new InitDataBuilder($data);
+        $response    = $this->requestExecutor->executeRequest('init', $dataBuilder->build());
+
+        return $response;
     }
 
     /**
