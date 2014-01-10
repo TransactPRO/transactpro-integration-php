@@ -69,65 +69,91 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
         $this->assertUnsuccessfulResponse($response);
     }
 
-    /**
-     * @expectedException \TransactPRO\Gate\Exceptions\NotImplementedAction
-     */
-    public function testChargeAreNotImplemented()
+    public function testCharge()
     {
-        $this->gateClient->charge();
+        $response = $this->gateClient->charge(array(
+            'f_extended'          => '5',
+            'init_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+            'cc'                  => '5111111111111111',
+            'cvv'                 => '111',
+            'expire'              => '01/20'
+        ));
+        $this->assertUnsuccessfulResponse($response);
     }
 
-    /**
-     * @expectedException \TransactPRO\Gate\Exceptions\NotImplementedAction
-     */
-    public function testInitDmsAreNotImplemented()
+    public function testInitDms()
     {
-        $this->gateClient->initDms();
+        $response = $this->gateClient->initDms(array(
+            'rs'                      => 'AAAA',
+            'merchant_transaction_id' => microtime(true),
+            'user_ip'                 => '127.0.0.1',
+            'description'             => 'Test description',
+            'amount'                  => '100',
+            'currency'                => 'LVL',
+            'name_on_card'            => 'Vasyly Pupkin',
+            'street'                  => 'Main street 1',
+            'zip'                     => 'LV-0000',
+            'city'                    => 'Riga',
+            'country'                 => 'LV',
+            'state'                   => 'NA',
+            'email'                   => 'email@example.lv',
+            'phone'                   => '+371 11111111',
+            'card_bin'                => '511111',
+            'bin_name'                => 'BANK',
+            'bin_phone'               => '+371 11111111',
+            'merchant_site_url'       => 'http://www.example.com'
+        ));
+        $this->assertUnsuccessfulResponse($response);
     }
 
-    /**
-     * @expectedException \TransactPRO\Gate\Exceptions\NotImplementedAction
-     */
-    public function testMakeHoldAreNotImplemented()
+    public function testMakeHold()
     {
-        $this->gateClient->makeHold();
+        $response = $this->gateClient->makeHold(array(
+            'f_extended'          => '5',
+            'init_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+            'cc'                  => '5111111111111111',
+            'cvv'                 => '111',
+            'expire'              => '01/20'
+        ));
+        $this->assertUnsuccessfulResponse($response);
     }
 
-    /**
-     * @expectedException \TransactPRO\Gate\Exceptions\NotImplementedAction
-     */
-    public function testChargeHoldAreNotImplemented()
+    public function testChargeHold()
     {
-        $this->gateClient->chargeHold();
+        $response = $this->gateClient->chargeHold(array(
+            'init_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg'
+        ));
+        $this->assertUnsuccessfulResponse($response);
     }
 
-    /**
-     * @expectedException \TransactPRO\Gate\Exceptions\NotImplementedAction
-     */
-    public function testCancelDmsAreNotImplemented()
+    public function testCancelDms()
     {
-        $this->gateClient->cancelDms();
+        $response = $this->gateClient->cancelDms(array(
+            'init_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+            'amount_to_refund'    => '100'
+        ));
+        $this->assertUnsuccessfulResponse($response);
     }
 
-    /**
-     * @expectedException \TransactPRO\Gate\Exceptions\NotImplementedAction
-     */
-    public function testRefundAreNotImplemented()
+    public function testRefund()
     {
-        $this->gateClient->refund();
+        $response = $this->gateClient->refund(array(
+            'init_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+            'amount_to_refund'    => '100'
+        ));
+        $this->assertUnsuccessfulResponse($response);
     }
 
-    /**
-     * @expectedException \TransactPRO\Gate\Exceptions\NotImplementedAction
-     */
-    public function testStatusRequestAreNotImplemented()
+    public function testStatusRequest()
     {
-        $this->gateClient->statusRequest();
+        $response = $this->gateClient->statusRequest(array(
+            'request_type'        => 'transaction_status',
+            'init_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+            'f_extended'          => '5'
+        ));
+        $this->assertUnsuccessfulResponse($response);
     }
 
-    /**
-     * @param Response $response
-     */
     private function assertUnsuccessfulResponse($response)
     {
         $this->assertInstanceOf('TransactPRO\Gate\Response\Response', $response, 'Result must be instance of TransactPRO\Gate\Response\Response class.');

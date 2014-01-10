@@ -2,7 +2,14 @@
 
 namespace TransactPRO\Gate;
 
+use TransactPRO\Gate\Builders\CancelDmsDataBuilder;
+use TransactPRO\Gate\Builders\ChargeDataBuilder;
+use TransactPRO\Gate\Builders\ChargeHoldDataBuilder;
 use TransactPRO\Gate\Builders\InitDataBuilder;
+use TransactPRO\Gate\Builders\InitDmsDataBuilder;
+use TransactPRO\Gate\Builders\MakeHoldDataBuilder;
+use TransactPRO\Gate\Builders\RefundDataBuilder;
+use TransactPRO\Gate\Builders\StatusRequestDataBuilder;
 use TransactPRO\Gate\Exceptions\NotImplementedAction;
 use TransactPRO\Gate\Builders\AccessDataBuilder;
 use TransactPRO\Gate\Request\RequestExecutor;
@@ -53,59 +60,59 @@ class GateClient
         return $response;
     }
 
-    /**
-     * @throws Exceptions\NotImplementedAction
-     */
-    public function charge()
+    public function charge(array $data)
     {
-        throw new NotImplementedAction();
+        $dataBuilder = new ChargeDataBuilder($data);
+        $response    = $this->requestExecutor->executeRequest('charge', $dataBuilder->build());
+
+        return $response;
     }
 
-    /**
-     * @throws Exceptions\NotImplementedAction
-     */
-    public function initDms()
+    public function initDms(array $data)
     {
-        throw new NotImplementedAction();
+        $dataBuilder = new InitDmsDataBuilder($data);
+        $response    = $this->requestExecutor->executeRequest('init_dms', $dataBuilder->build());
+
+        return $response;
     }
 
-    /**
-     * @throws Exceptions\NotImplementedAction
-     */
-    public function makeHold()
+    public function makeHold(array $data)
     {
-        throw new NotImplementedAction();
+        $dataBuilder = new MakeHoldDataBuilder($data);
+        $response    = $this->requestExecutor->executeRequest('make_hold', $dataBuilder->build());
+
+        return $response;
     }
 
-    /**
-     * @throws Exceptions\NotImplementedAction
-     */
-    public function chargeHold()
+    public function chargeHold(array $data)
     {
-        throw new NotImplementedAction();
+        $dataBuilder = new ChargeHoldDataBuilder($data);
+        $response    = $this->requestExecutor->executeRequest('charge_hold', $dataBuilder->build());
+
+        return $response;
     }
 
-    /**
-     * @throws Exceptions\NotImplementedAction
-     */
-    public function cancelDms()
+    public function cancelDms(array $data)
     {
-        throw new NotImplementedAction();
+        $dataBuilder = new CancelDmsDataBuilder($data);
+        $response    = $this->requestExecutor->executeRequest('cancel_dms', $dataBuilder->build());
+
+        return $response;
     }
 
-    /**
-     * @throws Exceptions\NotImplementedAction
-     */
-    public function refund()
+    public function refund(array $data)
     {
-        throw new NotImplementedAction();
+        $dataBuilder = new RefundDataBuilder($data);
+        $response    = $this->requestExecutor->executeRequest('refund', $dataBuilder->build());
+
+        return $response;
     }
 
-    /**
-     * @throws Exceptions\NotImplementedAction
-     */
-    public function statusRequest()
+    public function statusRequest(array $data)
     {
-        throw new NotImplementedAction();
+        $dataBuilder = new StatusRequestDataBuilder($data);
+        $response    = $this->requestExecutor->executeRequest('status_request', $dataBuilder->build());
+
+        return $response;
     }
 } 
