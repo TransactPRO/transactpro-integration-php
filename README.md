@@ -63,7 +63,7 @@ $gateClient = new GateClient(array(
 
 ```
 
-[ UNDER CONSTRUCTION ]
+**[UNDER CONSTRUCTION]**
 
 # Tests
 If you wish to run tests, you need to install development dependencies:
