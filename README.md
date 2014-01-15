@@ -29,6 +29,12 @@ And then install with:
 $ composer.phar install
 ```
 
+### Manual
+You can manually download library and use autoloader.
+```php
+require_once 'lib/autoloader.php'
+```
+
 # Usage
 ### Create gate client
 | Field     | Mandatory | Type   | Description                                                          |
