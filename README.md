@@ -1,7 +1,7 @@
 TransactPRO PHP integration
 ===============
-[![Build Status](https://travis-ci.org/FylmTM/transactpro-integration-php.png?branch=master)](https://travis-ci.org/FylmTM/transactpro-integration-php)
-[![Coverage Status](https://coveralls.io/repos/FylmTM/transactpro-integration-php/badge.png)](https://coveralls.io/r/FylmTM/transactpro-integration-php)
+[![Build Status](https://travis-ci.org/TransactPRO/transactpro-integration-php.png?branch=master)](https://travis-ci.org/TransactPRO/transactpro-integration-php)
+[![Coverage Status](https://coveralls.io/repos/TransactPRO/transactpro-integration-php/badge.png)](https://coveralls.io/r/TransactPRO/transactpro-integration-php)
 
 # About
 **Author**: Dmitry Vrublevskis  
