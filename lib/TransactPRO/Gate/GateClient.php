@@ -118,9 +118,10 @@ class GateClient
 
     private function buildData(Builder $builder)
     {
-        $buildData         = $builder->build();
-        $buildData['guid'] = $this->accessData['guid'];
-        $buildData['pwd']  = $this->accessData['pwd'];
+        $buildData                 = $builder->build();
+        $buildData['guid']         = $this->accessData['guid'];
+        $buildData['account_guid'] = $this->accessData['guid'];
+        $buildData['pwd']          = $this->accessData['pwd'];
 
         return $buildData;
     }
