@@ -189,6 +189,7 @@ To get raw response you can use ```getResponseContent```.
 If request was successful, then API response was returned. If not, then curl_error was returned.
 ```php
 $response->getResponseContent(); // Return string.
+$response->getParsedResponse();  // Parsed response content.
 ```
 
 # Tests

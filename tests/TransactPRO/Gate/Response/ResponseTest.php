@@ -44,5 +44,21 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($response->isSuccessful());
     }
 
+    public function testParsedResponseIsEmptyIfError()
+    {
+        $response = new Response(Response::STATUS_ERROR, 'key1:value1~key2:value2');
+        $this->assertEquals(array(), $response->getParsedResponse());
+    }
+
+    public function testParsedResponseIsCorrectIfSuccess()
+    {
+        $response = new Response(Response::STATUS_SUCCESS, 'key1:value1~key2:value2:some~key3');
+        $this->assertEquals(array(
+            'key1' => 'value1',
+            'key2' => 'value2:some',
+            'key3' => ''
+        ), $response->getParsedResponse());
+    }
+
 }
  

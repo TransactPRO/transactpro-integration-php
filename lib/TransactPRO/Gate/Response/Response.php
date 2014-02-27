@@ -10,7 +10,7 @@ class Response
     /** Indicates that response are successful. */
     const STATUS_SUCCESS = 'success';
     /** Indicates that response are unsuccessful and contain error. */
-    const STATUS_ERROR   = 'error';
+    const STATUS_ERROR = 'error';
 
     /** @var int */
     private $responseStatus;
@@ -58,5 +58,22 @@ class Response
     public function getResponseStatus()
     {
         return $this->responseStatus;
+    }
+
+    /**
+     * @return array
+     */
+    public function getParsedResponse()
+    {
+        if ($this->getResponseStatus() == self::STATUS_ERROR) return array();
+
+        $parsedResponse = array();
+        $keyValuePairs  = explode("~", $this->responseContent);
+        foreach ($keyValuePairs as $keyValuePair) {
+            $keyValue                     = explode(":", $keyValuePair, 2);
+            $parsedResponse[$keyValue[0]] = isset($keyValue[1]) ? $keyValue[1] : '';
+        }
+
+        return $parsedResponse;
     }
 } 
