@@ -2,6 +2,9 @@ TransactPRO PHP integration
 ===============
 [![Build Status](https://travis-ci.org/TransactPRO/transactpro-integration-php.png?branch=master)](https://travis-ci.org/TransactPRO/transactpro-integration-php)
 [![Coverage Status](https://coveralls.io/repos/TransactPRO/transactpro-integration-php/badge.png)](https://coveralls.io/r/TransactPRO/transactpro-integration-php)
+[![Total Downloads](https://poser.pugx.org/transact-pro/gate/downloads.svg)](https://packagist.org/packages/transact-pro/gate)
+[![Latest Stable Version](https://poser.pugx.org/transact-pro/gate/v/stable.svg)](https://packagist.org/packages/transact-pro/gate)
+[![License](https://poser.pugx.org/transact-pro/gate/license.svg)](https://packagist.org/packages/transact-pro/gate)
 
 # About
 **Author**: Dmitry Vrublevskis  
