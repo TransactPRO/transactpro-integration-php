@@ -20,11 +20,8 @@ You must adopt library for your projects by yourselves, I only provide basic fun
 Recommended way of installation is through [composer](http://getcomposer.org/).  
 Add to your composer.json:
 ```javascript
-"repositories": [
-    { "type": "git", "url": "https://github.com/FylmTM/transactpro-integration-php.git" }
-],
 "require": {
-    "transact-pro/gate": "master",
+    "transact-pro/gate": "v1.0.0"
 }
 ```
 And then install with:
