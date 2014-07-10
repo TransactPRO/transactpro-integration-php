@@ -161,7 +161,7 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('TransactPRO\Gate\Response\Response', $response, 'Result must be instance of TransactPRO\Gate\Response\Response class.');
         $this->assertFalse($response->isSuccessful(), 'Response must be unsuccessful');
-        $this->assertEquals("Couldn't resolve host 'www.payment-api.com'", $response->getResponseContent());
+        $this->assertContains("resolve host", $response->getResponseContent());
     }
 }
  
