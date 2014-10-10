@@ -19,7 +19,6 @@ class ChargeDataBuilder extends Builder
     {
         $this->checkMandatoryField('init_transaction_id');
         $this->checkMandatoryField('cc');
-        $this->checkMandatoryField('cvv');
         $this->checkMandatoryField('expire');
     }
 }
