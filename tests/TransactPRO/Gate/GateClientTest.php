@@ -156,7 +156,7 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
     
     public function testStatusRequestMerchantID()
     {
-        $response = $this->gateClient->statusRequest(array(
+        $response = $this->gateClient->statusRequestMerchantID(array(
             'request_type'        => 'transaction_status',
             'merchant_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
             'f_extended'          => '5'
