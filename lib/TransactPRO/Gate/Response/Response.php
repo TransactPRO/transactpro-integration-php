@@ -84,7 +84,7 @@ class Response
 
         $parsedResponse = $this->getParsedResponse();
 
-        if( !$parsedResponse['Status'] ) {
+        if( !isset($parsedResponse['Status']) ) {
             return false;
         }
 
