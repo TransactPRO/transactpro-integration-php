@@ -62,13 +62,19 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     
     public function testGetTransactionStatusIfSuccess()
     {
-        $response = new Response(Response::STATUS_SUCCESS, '');
+        $response = new Response(Response::STATUS_SUCCESS, 'Status:Success');
         $this->assertEquals(true, $response->getTransactionStatus());
     }
     
     public function testGetTransactionStatusIfFailed()
     {
-        $response = new Response(Response::STATUS_ERROR, '');
+        $response = new Response(Response::STATUS_ERROR, 'Status:Failed');
+        $this->assertEquals(false, $response->getTransactionStatus());
+    }
+    
+    public function testGetTransactionStatusIfPending()
+    {
+        $response = new Response(Response::STATUS_ERROR, 'Status:Pending');
         $this->assertEquals(false, $response->getTransactionStatus());
     }
 
