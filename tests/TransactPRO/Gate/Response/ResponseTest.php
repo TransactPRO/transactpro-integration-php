@@ -59,6 +59,23 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
             'key3' => ''
         ), $response->getParsedResponse());
     }
-
+    
+    public function testGetTransactionStatusIfSuccess()
+    {
+        $response = new Response(Response::STATUS_SUCCESS, 'Status:Success');
+        $this->assertEquals(true, $response->getTransactionStatus());
+    }
+    
+    public function testGetTransactionStatusIfFailed()
+    {
+        $response = new Response(Response::STATUS_ERROR, 'Status:Failed');
+        $this->assertEquals(false, $response->getTransactionStatus());
+    }
+    
+    public function testGetTransactionStatusIfPending()
+    {
+        $response = new Response(Response::STATUS_ERROR, 'Status:Pending');
+        $this->assertEquals(false, $response->getTransactionStatus());
+    }
 }
  
