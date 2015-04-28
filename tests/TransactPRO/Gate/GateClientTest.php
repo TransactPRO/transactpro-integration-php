@@ -153,6 +153,16 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
         ));
         $this->assertUnsuccessfulResponse($response);
     }
+    
+    public function testStatusRequestMerchantID()
+    {
+        $response = $this->gateClient->statusRequest(array(
+            'request_type'        => 'transaction_status',
+            'merchant_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+            'f_extended'          => '5'
+        ));
+        $this->assertUnsuccessfulResponse($response);
+    }
 
     /**
      * @param Response $response
