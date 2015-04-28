@@ -36,6 +36,10 @@ class InitDataBuilder extends Builder
         $this->checkMandatoryField('amount');
         $this->checkMandatoryField('currency');
         $this->checkMandatoryField('name_on_card');
+        $this->checkMandatoryField('street');
+        $this->checkMandatoryField('zip');
+        $this->checkMandatoryField('city');
+        $this->checkMandatoryField('country');
         $this->checkMandatoryField('phone');
         $this->checkMandatoryField('merchant_site_url');
     }

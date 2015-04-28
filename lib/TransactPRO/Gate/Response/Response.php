@@ -76,24 +76,4 @@ class Response
 
         return $parsedResponse;
     }
-
-    /**
-     * @return bool
-     */
-    public function getTransactionStatus() {
-
-        $parsedResponse = $this->getParsedResponse();
-
-        if( !$parsedResponse['Status'] ) {
-            return false;
-        }
-
-        if( $parsedResponse['Status'] == 'Success' ) {
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
-}
+} 

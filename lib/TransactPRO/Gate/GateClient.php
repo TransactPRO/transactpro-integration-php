@@ -12,7 +12,6 @@ use TransactPRO\Gate\Builders\MakeHoldDataBuilder;
 use TransactPRO\Gate\Builders\RefundDataBuilder;
 use TransactPRO\Gate\Builders\StatusRequestDataBuilder;
 use TransactPRO\Gate\Builders\AccessDataBuilder;
-use TransactPRO\Gate\Builders\StatusRequestDataBuilderMerchantID;
 use TransactPRO\Gate\Request\RequestExecutor;
 use TransactPRO\Gate\Request\RequestExecutorInterface;
 
@@ -115,15 +114,6 @@ class GateClient
         $response  = $this->requestExecutor->executeRequest('status_request', $buildData);
 
         return $response;
-    }
-
-    public function statusRequestMerchantID(array $data) {
-
-        $buildData = $this->buildData(new StatusRequestDataBuilderMerchantID($data));
-        $response  = $this->requestExecutor->executeRequest('status_request', $buildData);
-
-        return $response;
-
     }
 
     private function buildData(Builder $builder)
