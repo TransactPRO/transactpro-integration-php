@@ -40,10 +40,6 @@ class InitDataBuilderTest extends BuilderTestCase
             array('amount'),
             array('currency'),
             array('name_on_card'),
-            array('street'),
-            array('zip'),
-            array('city'),
-            array('country'),
             array('phone'),
             array('merchant_site_url')
         );
