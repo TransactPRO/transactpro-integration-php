@@ -22,7 +22,7 @@ abstract class BuilderTestCase extends \PHPUnit_Framework_TestCase
 
     public function assertMandatoryField($field)
     {
-        $this->setExpectedException('\TransactPRO\Gate\Exceptions\MissingFieldException');
+        $this->setExpectedException('TransactPRO\Gate\Exceptions\MissingFieldException');
         $data = $this->data;
         unset($data[$field]);
         new $this->builderClass($data);
