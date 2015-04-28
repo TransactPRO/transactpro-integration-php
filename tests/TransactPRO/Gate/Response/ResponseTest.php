@@ -77,6 +77,5 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
         $response = new Response(Response::STATUS_ERROR, 'Status:Pending');
         $this->assertEquals(false, $response->getTransactionStatus());
     }
-
 }
  
