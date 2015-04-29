@@ -23,5 +23,12 @@ class RequestExecutorTest extends \PHPUnit_Framework_TestCase
         $response = $this->executeRequestBuilder(true);
         $this->assertInstanceOf('\TransactPRO\Gate\Response\Response', $response);
     }
+    
+    public function testExecuteReturnResponseSuccess()
+    {
+        $requestExecutor = new RequestExecutor('https://www.google.lv', false);
+        $response =  $requestExecutor->executeRequest('action', array());
+        $this->assertInstanceOf('\TransactPRO\Gate\Response\Response', $response);
+    }
 }
  
