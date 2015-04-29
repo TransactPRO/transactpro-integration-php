@@ -9,7 +9,7 @@ class RequestExecutorTest extends \PHPUnit_Framework_TestCase
     public function executeRequestBuilder($verifySSL)
     {
         $requestExecutor = new RequestExecutor('https://www.payment-api.lv', $verifySSL);
-        $response = $requestExecutor->executeRequest('action', array());
+        return $requestExecutor->executeRequest('action', array());
     }
     
     public function testExecuteReturnResponse()
