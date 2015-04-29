@@ -6,17 +6,21 @@ use TransactPRO\Gate\Request\RequestExecutor;
 
 class RequestExecutorTest extends \PHPUnit_Framework_TestCase
 {
+    public function executeRequestBuilder($verifySSL)
+    {
+        $requestExecutor = new RequestExecutor('https://www.payment-api.lv', $verifySSL);
+        $response = $requestExecutor->executeRequest('action', array());
+    }
+    
     public function testExecuteReturnResponse()
     {
-        $requestExecutor = new RequestExecutor('https://www.payment-api.lv', false);
-        $response = $requestExecutor->executeRequest('action', array());
+        $response = $this->executeResponseBuilder(false);
         $this->assertInstanceOf('TransactPRO\Gate\Response\Response', $response);
     }
     
     public function testExecuteReturnResponseWithVerifySSL()
     {
-        $requestExecutor = new RequestExecutor('https://www.payment-api.lv', true);
-        $response = $requestExecutor->executeRequest('action', array());
+        $response = $this->executeResponseBuilder(true);
         $this->assertInstanceOf('TransactPRO\Gate\Response\Response', $response);
     }
 }
