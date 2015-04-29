@@ -12,5 +12,12 @@ class RequestExecutorTest extends \PHPUnit_Framework_TestCase
         $response = $requestExecutor->executeRequest('action', array());
         $this->assertInstanceOf('TransactPRO\Gate\Response\Response', $response);
     }
+    
+    public function testExecuteReturnResponseWithVerifySSL()
+    {
+        $requestExecutor = new RequestExecutor('https://www.payment-api.lv', true);
+        $response = $requestExecutor->executeRequest('action', array());
+        $this->assertInstanceOf('TransactPRO\Gate\Response\Response', $response);
+    }
 }
  
