@@ -15,13 +15,13 @@ class RequestExecutorTest extends \PHPUnit_Framework_TestCase
     public function testExecuteReturnResponse()
     {
         $response = $this->executeRequestBuilder(false);
-        $this->assertInstanceOf('TransactPRO\Gate\Response\Response', $response);
+        $this->assertInstanceOf('\TransactPRO\Gate\Response\Response', $response);
     }
     
     public function testExecuteReturnResponseWithVerifySSL()
     {
         $response = $this->executeRequestBuilder(true);
-        $this->assertInstanceOf('TransactPRO\Gate\Response\Response', $response);
+        $this->assertInstanceOf('\TransactPRO\Gate\Response\Response', $response);
     }
 }
  
