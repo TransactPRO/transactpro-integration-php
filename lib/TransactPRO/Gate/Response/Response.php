@@ -86,10 +86,12 @@ class Response
 
         if ( !isset($parsedResponse['Status']) ) {
             return false;
-        } else if ( $parsedResponse['Status'] == 'Success' ) {
-            return true;
         } else {
-            return false;
+            if ( $parsedResponse['Status'] == 'Success' ) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
