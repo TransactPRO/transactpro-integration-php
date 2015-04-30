@@ -85,14 +85,13 @@ class Response
 
         $parsedResponse = $this->getParsedResponse();
 
-        if( !isset($parsedResponse['Status']) ) {
+        if ( !isset($parsedResponse['Status']) ) {
             return false;
-        }
-
-        if( $parsedResponse['Status'] == 'Success' ) {
+        } else if ( $parsedResponse['Status'] == 'Success' ) {
             return true;
         }
 
+        return false;
     }
 
 }
