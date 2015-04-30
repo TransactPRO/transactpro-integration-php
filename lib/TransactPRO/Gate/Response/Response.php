@@ -90,8 +90,6 @@ class Response
 
         if( $parsedResponse['Status'] == 'Success' ) {
             return true;
-        } else {
-            return false;
         }
 
     }
