@@ -80,7 +80,8 @@ class Response
     /**
      * @return bool
      */
-    public function getTransactionStatus() {
+    public function getTransactionStatus()
+    {
 
         $parsedResponse = $this->getParsedResponse();
 
