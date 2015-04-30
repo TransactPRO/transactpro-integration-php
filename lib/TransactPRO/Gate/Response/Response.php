@@ -83,7 +83,7 @@ class Response
     public function getTransactionStatus()
     {
         $parsedResponse = $this->getParsedResponse();
-        return isset($parsedResponse['Status'] && $parsedResponse['Status'] == 'Success');
+        return isset($parsedResponse['Status']) && $parsedResponse['Status'] == 'Success';
     }
 
 }
