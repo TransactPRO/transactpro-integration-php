@@ -48,11 +48,10 @@ class RequestExecutor implements RequestExecutorInterface
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postData));
 
         $curlResult = curl_exec($ch);
+        $curlStatus = Response::STATUS_SUCCESS;
         if (!$curlResult) {
             $curlStatus = Response::STATUS_ERROR;
             $curlResult = curl_error($ch);
-        } else {
-            $curlStatus = Response::STATUS_SUCCESS;
         }
         curl_close($ch);
 
