@@ -1,4 +1,6 @@
 setup:
+    shell:
+        action: "/usr/local/bin/composer self-update"
     composer:
         action: "config --global github-protocols https"
     composer:
