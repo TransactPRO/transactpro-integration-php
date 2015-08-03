@@ -2,7 +2,7 @@ build_settings:
   verbose: true
   
 setup:
-    composer:
-        action: "config --global github-protocols https -vvv"
-    composer:
-        action: "install -vvv"
+    shell:
+        action: "composer config --global github-protocols https -vvv"
+    shell:
+        action: "composer install -vvv"
