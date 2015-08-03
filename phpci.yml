@@ -1,3 +1,5 @@
 setup:
     composer:
+        action: "config --global github-protocols https"
+    composer:
         action: "install"
