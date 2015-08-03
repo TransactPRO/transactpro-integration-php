@@ -1,7 +1,9 @@
 setup:
     composer:
-        action: "self-update"
-    composer:
         action: "config --global github-protocols https"
     composer:
+        action: "self-update"
+        prefer_dist: true
+    composer:
         action: "install"
+        prefer_dist: true
