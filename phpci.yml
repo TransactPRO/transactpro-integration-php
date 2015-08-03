@@ -1,0 +1,3 @@
+setup:
+    sh:
+        action: "echo 'hello world'"
