@@ -3,4 +3,6 @@ build_settings:
   
 setup:
     composer:
+        action: "config --global github-protocols https -vvv"
+    composer:
         action: "install -vvv"
