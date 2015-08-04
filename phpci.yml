@@ -3,7 +3,7 @@ build_settings:
   
 setup:
     shell:
-        action: "id"
+        action: "echo %PROJECT%"
     shell:
         action: "composer config --global github-protocols https -vvv"
     shell:
