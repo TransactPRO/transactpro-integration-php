@@ -6,6 +6,7 @@ setup:
         action: install
     shell:
         - mkdir -p build/logs
+        
 test:
     php_unit:
         coverage: build/logs
@@ -20,6 +21,11 @@ test:
             - "somedir/customruleset.xml"
         allow_failures: true
         zero_config: true # do not make build as failed if something was detected
+    php_cs_fixer:
+        verbose: true
+        diff: true
+        level: "psr2"
+        
 complete:
     shell:
         - rm -rf /var/www/html/transactpro-integration-php/branches/%BRANCH%/
