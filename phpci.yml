@@ -2,10 +2,13 @@ build_settings:
     verbose: true
   
 setup:
+    composer:
+        action: install
     shell:
-        - composer install
         - mkdir -p build/logs
-        - php vendor/bin/phpunit --coverage-html build/logs
+test:
+    php_unit:
+        coverage: build/logs
 complete:
     shell:
         - rm -rf /var/www/html/transactpro-integration-php/branches/%BRANCH%/
