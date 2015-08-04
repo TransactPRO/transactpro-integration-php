@@ -3,6 +3,8 @@ build_settings:
   
 setup:
     shell:
+        action: "id"
+    shell:
         action: "composer config --global github-protocols https -vvv"
     shell:
         action: "composer install -vvv"
