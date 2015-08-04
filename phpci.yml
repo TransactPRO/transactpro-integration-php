@@ -5,8 +5,7 @@ setup:
     shell:
         - composer install
         - mkdir -p build/logs
-        - php vendor/bin/phpunit
+        - php vendor/bin/phpunit --coverage-html build/logs/clover.html
 complete:
     shell:
-        - php vendor/bin/coveralls -v
         - cp -r ./* /var/www/html/transactpro-integration-php/branches/%BRANCH%/
