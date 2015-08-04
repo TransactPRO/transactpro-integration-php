@@ -9,6 +9,17 @@ setup:
 test:
     php_unit:
         coverage: build/logs
+    php_mess_detector:
+        rules:
+            - "cleancode"
+            - "controversial"
+            - "codesize"
+            - "design"
+            - "naming"
+            - "unusedcode"
+            - "somedir/customruleset.xml"
+        allow_failures: true
+        zero_config: true # do not make build as failed if something was detected
 complete:
     shell:
         - rm -rf /var/www/html/transactpro-integration-php/branches/%BRANCH%/
