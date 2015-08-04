@@ -3,5 +3,5 @@ build_settings:
   
 setup:
     shell:
-        - echo "test"
-        - echo "something more with %BUILD%
+        - echo 'test'
+        - echo 'something more with %BUILD%'
