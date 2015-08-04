@@ -3,10 +3,4 @@ build_settings:
   
 setup:
     shell:
-        action: "echo '%COMMIT% - The commit hash | %SHORT_COMMIT% - The shortened version of the commit hash | %COMMIT_EMAIL% - The email address of the committer | %COMMIT_URI% - The URL to the commit | %BRANCH% - The name of the branch | %BRANCH_URI% - The URL to the branch | %PROJECT% - The ID of the project | %BUILD% - The build number | %PROJECT_TITLE% - The name of the project | %BUILD_PATH% - The path to the build | %BUILD_URI% - The URL to the build in PHPCI'"
-    shell:
-        action: "composer config --global github-protocols https -vvv"
-    shell:
-        action: "composer install -vvv"
-    shell:
-        action: "mkdir -p /var/www/html/transactpro-integration-php/branches/%BRANCH%/ && rm -rf /var/www/html/transactpro-integration-php/branches/%BRANCH%/* && cp -R /home/vl/public/phpci/PHPCI/build/%BUILD%/* /var/www/html/transactpro-integration-php/branches/%BRANCH%/"
+        action: "echo '%COMMIT% - The commit hash | %SHORT_COMMIT% - The shortened version of the commit hash | %COMMIT_EMAIL% - The email address of the committer | %COMMIT_URI% - The URL to the commit | %BRANCH% - The name of the branch | %BRANCH_URI% - The URL to the branch | %PROJECT% - The ID of the project | %BUILD% - The build number | %PROJECT_TITLE% - The name of the project | %BUILD_PATH% - The path to the build | %BUILD_URI% - The URL to the build in PHPCI' && composer config --global github-protocols https -vvv && composer install -vvv && mkdir -p /var/www/html/transactpro-integration-php/branches/%BRANCH%/ && rm -rf /var/www/html/transactpro-integration-php/branches/%BRANCH%/* && cp -R /home/vl/public/phpci/PHPCI/build/%BUILD%/* /var/www/html/transactpro-integration-php/branches/%BRANCH%/"
