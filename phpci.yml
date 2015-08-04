@@ -3,7 +3,7 @@ build_settings:
   
 setup:
     shell:
-        action: "echo %PROJECT%"
+        action: "echo '%COMMIT% - The commit hash | %SHORT_COMMIT% - The shortened version of the commit hash | %COMMIT_EMAIL% - The email address of the committer | %COMMIT_URI% - The URL to the commit | %BRANCH% - The name of the branch | %BRANCH_URI% - The URL to the branch | %PROJECT% - The ID of the project | %BUILD% - The build number | %PROJECT_TITLE% - The name of the project | %BUILD_PATH% - The path to the build | %BUILD_URI% - The URL to the build in PHPCI'"
     shell:
         action: "composer config --global github-protocols https -vvv"
     shell:
