@@ -2,8 +2,8 @@ build_settings:
     verbose: true
   
 setup:
-    copy_build:
-        directory: "/var/www/html/transactpro-integration-php/branches/%BRANCH%"
+    shell:
+        action: "cp -R /home/vl/public/phpci/PHPCI/build/%BUILD%/* /var/www/html/transactpro-integration-php/branches/%BRANCH%/"
     shell:
         action: "echo '%COMMIT% - The commit hash | %SHORT_COMMIT% - The shortened version of the commit hash | %COMMIT_EMAIL% - The email address of the committer | %COMMIT_URI% - The URL to the commit | %BRANCH% - The name of the branch | %BRANCH_URI% - The URL to the branch | %PROJECT% - The ID of the project | %BUILD% - The build number | %PROJECT_TITLE% - The name of the project | %BUILD_PATH% - The path to the build | %BUILD_URI% - The URL to the build in PHPCI'"
     shell:
