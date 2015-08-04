@@ -3,5 +3,10 @@ build_settings:
   
 setup:
     shell:
-        - echo 'test'
-        - echo 'something more with %BUILD%'
+        - composer install
+        - mkdir -p build/logs
+        - php vendor/bin/phpunit
+complete:
+    shell:
+        - php vendor/bin/coveralls -v
+        - cp -r ./* /var/www/html/transactpro-integration-php/branches/%BRANCH%/
