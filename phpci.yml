@@ -14,7 +14,7 @@ test:
         
 complete:
     hipchat_notify:
-        authToken: LEGCsEfOXyFwuwIMlqJkAarhgzR3KCEmTHe8Ank3
+        authToken: 5c61bb64ce591250062db91d6ca1c3
         room: 269893
         message: <b>%PROJECT_TITLE%</b> - build <a href="%BUILD_URI%">%BUILD%</a> failed!
         color: red
