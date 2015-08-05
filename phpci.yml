@@ -12,7 +12,13 @@ test:
     php_unit:
         coverage: build/logs
         
-#complete:
+complete:
+    hipchat_notify:
+        authToken: LEGCsEfOXyFwuwIMlqJkAarhgzR3KCEmTHe8Ank3
+        room: 269893
+        message: <b>%PROJECT_TITLE%</b> - build <a href="%BUILD_URI%">%BUILD%</a> failed!
+        color: red
+        notify: true
     #shell:
         #- rm -rf /var/www/html/transactpro-integration-php/branches/%BRANCH%/
         #- mkdir -p /var/www/html/transactpro-integration-php/branches/%BRANCH%/
