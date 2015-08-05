@@ -7,10 +7,11 @@ setup:
     shell:
         - mkdir -p build/logs
         - echo "test2 phpci hook"
+        - php vendor/bin/phpunit
         
-test:
-    php_unit:
-        coverage: build/logs
+#test:
+    #php_unit:
+        #coverage: build/logs
         
 #complete:
     #shell:
