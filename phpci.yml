@@ -11,15 +11,3 @@ setup:
 test:
     php_unit:
         coverage: build/logs
-        
-#complete:
-    #shell:
-        #- rm -rf /var/www/html/transactpro-integration-php/branches/%BRANCH%/
-        #- mkdir -p /var/www/html/transactpro-integration-php/branches/%BRANCH%/
-        #- cp -r ./* /var/www/html/transactpro-integration-php/branches/%BRANCH%/
-        #- chmod -R 777 /var/www/html/transactpro-integration-php/branches/%BRANCH%/
-        #- chmod -R ugo+s /var/www/html/transactpro-integration-php/branches/%BRANCH%/
-        #- setfacl -dRm u::rwX,g::rwX,o::rwX /var/www/html/transactpro-integration-php/branches/%BRANCH%/
-        #- echo "Branch build is available at /var/www/html/transactpro-integration-php/branches/%BRANCH%"
-        #- echo "Web access: http://%BRANCH%.transactpro-integration-php.pub/"
-        #- echo "Build clover: http://%BRANCH%.transactpro-integration-php.pub/build/logs/index.html"
