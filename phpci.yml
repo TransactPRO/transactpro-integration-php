@@ -6,6 +6,7 @@ setup:
         action: install
     shell:
         - mkdir -p build/logs
+        - echo "test phpci hook"
         
 test:
     php_unit:
