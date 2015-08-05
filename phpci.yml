@@ -21,6 +21,7 @@ complete:
         notify: true
     shell:
         - echo "test2 phpci hook complete"
+        
     #shell:
         #- rm -rf /var/www/html/transactpro-integration-php/branches/%BRANCH%/
         #- mkdir -p /var/www/html/transactpro-integration-php/branches/%BRANCH%/
