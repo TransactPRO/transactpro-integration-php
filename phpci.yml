@@ -1,0 +1,39 @@
+build_settings:
+    verbose: true
+  
+setup:
+    shell:
+        - echo "Running 'setup' stage"
+        - mkdir -p build/logs
+    composer:
+        action: install
+        
+test:
+    shell:
+        - echo "Running 'test' stage"
+    php_unit:
+        coverage: build/logs
+        
+complete:
+    shell:
+        - echo "Running 'complete' stage"
+        
+success:
+    shell:
+        - echo "Running 'success' stage"
+    hipchat_notify:
+        authToken: 5c61bb64ce591250062db91d6ca1c3
+        room: 269893
+        message: <b>%PROJECT_TITLE%</b> - build <a href="%BUILD_URI%">%BUILD%</a> succeed!
+        color: green
+        notify: true
+        
+failure:
+    shell:
+        - echo "Running 'failure' stage"
+    hipchat_notify:
+        authToken: 5c61bb64ce591250062db91d6ca1c3
+        room: 269893
+        message: <b>%PROJECT_TITLE%</b> - build <a href="%BUILD_URI%">%BUILD%</a> failed!
+        color: red
+        notify: true
