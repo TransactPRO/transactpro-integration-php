@@ -18,7 +18,7 @@ complete:
     email:
         default_mailto_address: vl@tpro.lv
     shell:
-        - echo "Running 'complete' stage"
+        - echo "Running 'complete' stage (emails)"
         
 success:
     shell:
