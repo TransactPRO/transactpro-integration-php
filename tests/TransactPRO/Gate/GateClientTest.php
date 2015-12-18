@@ -64,7 +64,8 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
             'card_bin'                => '511111',
             'bin_name'                => 'BANK',
             'bin_phone'               => '+371 11111111',
-            'merchant_site_url'       => 'http://www.example.com'
+            'merchant_site_url'       => 'http://www.example.com',
+            'save_card'               => '1'
         ));
         $this->assertUnsuccessfulResponse($response);
     }
@@ -101,7 +102,8 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
             'card_bin'                => '511111',
             'bin_name'                => 'BANK',
             'bin_phone'               => '+371 11111111',
-            'merchant_site_url'       => 'http://www.example.com'
+            'merchant_site_url'       => 'http://www.example.com',
+            'save_card'               => '1'
         ));
         $this->assertUnsuccessfulResponse($response);
     }
