@@ -173,7 +173,7 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('TransactPRO\Gate\Response\Response', $response, 'Result must be instance of TransactPRO\Gate\Response\Response class.');
         $this->assertFalse($response->isSuccessful(), 'Response must be unsuccessful');
-        $this->assertContains("resolve host", $response->getResponseContent());
+        $this->assertContains("timed out", $response->getResponseContent());
     }
 }
  
