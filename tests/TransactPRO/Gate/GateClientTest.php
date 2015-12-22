@@ -64,7 +64,8 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
             'card_bin'                => '511111',
             'bin_name'                => 'BANK',
             'bin_phone'               => '+371 11111111',
-            'merchant_site_url'       => 'http://www.example.com'
+            'merchant_site_url'       => 'http://www.example.com',
+            'save_card'               => '1'
         ));
         $this->assertUnsuccessfulResponse($response);
     }
@@ -101,7 +102,8 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
             'card_bin'                => '511111',
             'bin_name'                => 'BANK',
             'bin_phone'               => '+371 11111111',
-            'merchant_site_url'       => 'http://www.example.com'
+            'merchant_site_url'       => 'http://www.example.com',
+            'save_card'               => '1'
         ));
         $this->assertUnsuccessfulResponse($response);
     }
@@ -171,7 +173,7 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('TransactPRO\Gate\Response\Response', $response, 'Result must be instance of TransactPRO\Gate\Response\Response class.');
         $this->assertFalse($response->isSuccessful(), 'Response must be unsuccessful');
-        $this->assertContains("resolve host", $response->getResponseContent());
+        $this->assertContains("timed out", $response->getResponseContent());
     }
 }
  

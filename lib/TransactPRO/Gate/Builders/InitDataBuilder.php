@@ -25,6 +25,7 @@ class InitDataBuilder extends Builder
             'bin_name'                => $this->getField('bin_name'),
             'bin_phone'               => $this->getField('bin_phone'),
             'merchant_site_url'       => $this->getField('merchant_site_url'),
+            'save_card'               => $this->getField('save_card')
         );
     }
 
