@@ -6,10 +6,6 @@ TransactPRO PHP integration
 [![Latest Stable Version](https://poser.pugx.org/transact-pro/gate/v/stable.svg)](https://packagist.org/packages/transact-pro/gate)
 [![License](https://poser.pugx.org/transact-pro/gate/license.svg)](https://packagist.org/packages/transact-pro/gate)
 
-# About
-**Author**: Dmitry Vrublevskis  
-**Contact**: d.vrublevskis@gmail.com
-
 Library provide ability to make requests to TransactPRO Gateway API.  
 Library are supported by me, and not by TransactPRO. So, submit all requests, issues and questions directly here (on GitHub).
 Library provided as is.  
