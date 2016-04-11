@@ -8,7 +8,9 @@ class RefundDataBuilder extends Builder
     {
         return array(
             'init_transaction_id' => $this->getField('init_transaction_id'),
-            'amount_to_refund'    => $this->getField('amount_to_refund')
+            'amount_to_refund' => $this->getField('amount_to_refund'),
+            'merchant_transaction_id' => $this->getField('merchant_transaction_id'),
+            'details' => $this->getField('details'),
         );
     }
 
