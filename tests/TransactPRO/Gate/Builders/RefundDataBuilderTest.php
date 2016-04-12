@@ -9,7 +9,9 @@ class RefundDataBuilderTest extends BuilderTestCase
         $this->builderClass = 'TransactPRO\Gate\Builders\RefundDataBuilder';
         $this->data = array(
             'init_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
-            'amount_to_refund'    => '100'
+            'amount_to_refund' => '100',
+            'merchant_transaction_id' => '14hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzoxg',
+            'details' => 'true',
         );
         $this->buildData = $this->data;
     }
@@ -25,6 +27,7 @@ class RefundDataBuilderTest extends BuilderTestCase
     public function testNonMandatoryFields($field = false, $expectedFieldValue = false)
     {
     }
+
     public function getNonMandatoryFields()
     {
     }
