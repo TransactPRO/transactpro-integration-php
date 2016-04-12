@@ -2,6 +2,8 @@
 
 namespace tests\TransactPRO\Gate\Builders;
 
+use TransactPRO\Gate\Builders\RefundDataBuilder;
+
 class RefundDataBuilderTest extends BuilderTestCase
 {
     protected function setUp()
@@ -10,8 +12,6 @@ class RefundDataBuilderTest extends BuilderTestCase
         $this->data = array(
             'init_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
             'amount_to_refund' => '100',
-            'merchant_transaction_id' => '14hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzoxg',
-            'details' => 'true',
         );
         $this->buildData = $this->data;
     }
@@ -30,6 +30,19 @@ class RefundDataBuilderTest extends BuilderTestCase
 
     public function getNonMandatoryFields()
     {
+    }
+
+    public function testOptionalFields()
+    {
+        $data = [
+            'init_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+            'amount_to_refund' => '100',
+            'merchant_transaction_id' => '31hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzogc',
+            'details' => 'true',
+        ];
+        $builder = new RefundDataBuilder($data);
+
+        $this->assertEquals($data, $builder->build());
     }
 }
  
