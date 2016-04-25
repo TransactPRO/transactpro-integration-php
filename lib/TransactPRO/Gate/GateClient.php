@@ -8,6 +8,10 @@ use TransactPRO\Gate\Builders\ChargeDataBuilder;
 use TransactPRO\Gate\Builders\ChargeHoldDataBuilder;
 use TransactPRO\Gate\Builders\InitDataBuilder;
 use TransactPRO\Gate\Builders\InitDmsDataBuilder;
+use TransactPRO\Gate\Builders\InitP2PDataBuilder;
+use TransactPRO\Gate\Builders\InitCreditDataBuilder;
+use TransactPRO\Gate\Builders\DoP2PDataBuilder;
+use TransactPRO\Gate\Builders\DoCreditDataBuilder;
 use TransactPRO\Gate\Builders\MakeHoldDataBuilder;
 use TransactPRO\Gate\Builders\RefundDataBuilder;
 use TransactPRO\Gate\Builders\StatusRequestDataBuilder;
@@ -124,6 +128,38 @@ class GateClient
 
         return $response;
 
+    }
+
+    public function initP2P(array $data)
+    {
+        $buildData = $this->buildData(new InitP2PDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('init_p2p', $buildData);
+
+        return $response;
+    }
+
+    public function doP2P(array $data)
+    {
+        $buildData = $this->buildData(new DoP2PDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('do_p2p', $buildData);
+
+        return $response;
+    }
+
+    public function initCredit(array $data)
+    {
+        $buildData = $this->buildData(new InitCreditDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('init_credit', $buildData);
+
+        return $response;
+    }
+
+    public function doCredit(array $data)
+    {
+        $buildData = $this->buildData(new DoCreditDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('do_credit', $buildData);
+
+        return $response;
     }
 
     private function buildData(Builder $builder)
