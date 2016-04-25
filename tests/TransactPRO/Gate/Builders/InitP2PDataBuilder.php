@@ -1,49 +1,65 @@
 <?php
 
-namespace TransactPRO\Gate\Builders;
+namespace tests\TransactPRO\Gate\Builders;
 
-class InitP2PDataBuilder extends InitDataBuilder
+class InitP2PDataBuilder extends BuilderTestCase
 {
-    public function build()
+    public function setUp()
+    {
+        $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
+        $this->builderClass     = 'TransactPRO\Gate\Builders\InitDataBuilder';
+        $this->data             = array(
+            'rs'                      => 'AAAA',
+            'merchant_transaction_id' => microtime(true),
+            'user_ip'                 => '127.0.0.1',
+            'description'             => 'Test description',
+            'amount'                  => '100',
+            'currency'                => 'LVL',
+            'name_on_card'            => 'Vasyly Pupkin',
+            'street'                  => 'Main street 1',
+            'zip'                     => 'LV-0000',
+            'city'                    => 'Riga',
+            'country'                 => 'LV',
+            'state'                   => 'NA',
+            'email'                   => 'email@example.lv',
+            'phone'                   => '+371 11111111',
+            'card_bin'                => '511111',
+            'bin_name'                => 'BANK',
+            'bin_phone'               => '+371 11111111',
+            'merchant_site_url'       => 'http://www.example.com',
+            'save_card'               => '1',
+            'cardname'                => 'John DoE',
+            'recipient_name'          => 'JOHN DOE',
+            'client_birth_date'       => '29061988',
+        );
+        $this->buildData        = $this->data;
+    }
+
+    public function getMandatoryFields()
     {
         return array(
-            'rs'                      => $this->getField('rs'),
-            'merchant_transaction_id' => $this->getField('merchant_transaction_id'),
-            'user_ip'                 => $this->getField('user_ip', $_SERVER['REMOTE_ADDR']),
-            'description'             => $this->getField('description'),
-            'amount'                  => $this->getField('amount'),
-            'currency'                => $this->getField('currency'),
-            'name_on_card'            => $this->getField('name_on_card'),
-            'street'                  => $this->getField('street'),
-            'zip'                     => $this->getField('zip'),
-            'city'                    => $this->getField('city'),
-            'country'                 => $this->getField('country'),
-            'state'                   => $this->getField('state', 'NA'),
-            'email'                   => $this->getField('email'),
-            'phone'                   => $this->getField('phone'),
-            'card_bin'                => $this->getField('card_bin'),
-            'bin_name'                => $this->getField('bin_name'),
-            'bin_phone'               => $this->getField('bin_phone'),
-            'merchant_site_url'       => $this->getField('merchant_site_url'),
-            'save_card'               => $this->getField('save_card')
-            'cardname'                => $this->getField('cardname'),
-            'recipient_name'          => $this->getField('recipient_name'),
-            'client_birth_date'       => $this->getField('client_birth_date'),
+            array('rs'),
+            array('merchant_transaction_id'),
+            array('description'),
+            array('amount'),
+            array('currency'),
+            array('name_on_card'),
+            array('phone'),
+            array('merchant_site_url'),
+            array('cardname'),
+            array('recipient_name'),
+            array('client_birth_date'),
         );
     }
 
-    protected function checkData()
+    public function getNonMandatoryFields()
     {
-        $this->checkMandatoryField('rs');
-        $this->checkMandatoryField('merchant_transaction_id');
-        $this->checkMandatoryField('description');
-        $this->checkMandatoryField('amount');
-        $this->checkMandatoryField('currency');
-        $this->checkMandatoryField('name_on_card');
-        $this->checkMandatoryField('phone');
-        $this->checkMandatoryField('merchant_site_url');
-        $this->checkMandatoryField('cardname');
-        $this->checkMandatoryField('recipient_name');
-        $this->checkMandatoryField('client_birth_date');
+        return array(
+            array('user_ip', '127.0.0.1'),
+            array('state', 'NA'),
+            array('card_bin', ''),
+            array('bin_name', ''),
+            array('bin_phone', '')
+        );
     }
 }

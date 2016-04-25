@@ -23,14 +23,15 @@ class ChargeDataBuilderTest extends BuilderTestCase
         return array(
             array('init_transaction_id'),
             array('cc'),
-            array('expire')
+            array('expire'),
         );
     }
 
     public function getNonMandatoryFields()
     {
         return array(
-            array('f_extended', 5)
+            array('f_extended', 5),
+            array('merchant_referring_url'),
         );
     }
 

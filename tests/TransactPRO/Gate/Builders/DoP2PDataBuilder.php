@@ -1,23 +1,36 @@
 <?php
 
-namespace TransactPRO\Gate\Builders;
+namespace tests\TransactPRO\Gate\Builders;
 
-class DoP2PDataBuilder extends ChargeDataBuilder
+class DoP2PDataBuilder extends BuilderTestCase
 {
-    public function build()
+    protected function setUp()
+    {
+        $this->builderClass = 'TransactPRO\Gate\Builders\ChargeDataBuilder';
+        $this->data         = array(
+            'f_extended'                => '5',
+            'init_transaction_id'       => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+            'cc_2'                      => '5111111111111111',
+            'expire2'                   => '111',
+            'merchant_referring_url'    => 'http://www.paymentform.example.com',
+        );
+        $this->buildData    = $this->data;
+    }
+
+    public function getMandatoryFields()
     {
         return array(
-            'cc_2'                   => $this->getField('cc_2'),
-            'init_transaction_id'    => $this->getField('init_transaction_id'),
-            'f_extended'             => $this->getField('f_extended', 5),
-            'expire2'                => $this->getField('expire2'),
-            'merchant_referring_url' => $this->getField('merchant_referring_url'),
+            array('init_transaction_id'),
+            array('cc_2')
         );
     }
 
-    protected function checkData()
+    public function getNonMandatoryFields()
     {
-        $this->checkMandatoryField('cc_2');
-        $this->checkMandatoryField('init_transaction_id');
+        return array(
+            array('f_extended', 5),
+            array('expire2'),
+            array('merchant_referring_url'),
+        );
     }
 }

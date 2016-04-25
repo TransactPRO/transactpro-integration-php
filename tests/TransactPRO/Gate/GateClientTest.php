@@ -201,7 +201,18 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
             'f_extended'          => '5',
             'init_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
             'cc_2'                => '5111111111111111',
-            'expire'              => '01/25'
+        ));
+        $this->assertUnsuccessfulResponse($response);
+    }
+
+    public function testDoP2POptional()
+    {
+        $response = $this->gateClient->doP2P(array(
+            'f_extended'             => '5',
+            'init_transaction_id'    => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+            'cc_2'                   => '5111111111111111',
+            'expire_2'               => '01/25',
+            'merchant_referring_url' => 'http://www.payment.example.com/id=example_referring_id',
         ));
         $this->assertUnsuccessfulResponse($response);
     }

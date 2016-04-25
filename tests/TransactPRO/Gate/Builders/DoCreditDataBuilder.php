@@ -1,6 +1,5 @@
 <?php
 
-namespace TransactPRO\Gate\Builders;
+namespace tests\TransactPRO\Gate\Builders;
 
-
-class DoCreditDataBuilder extends ChargeDataBuilder{}
+class DoCreditDataBuilder extends ChargeDataBuilderTest{}
