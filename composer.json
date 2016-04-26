@@ -5,8 +5,7 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Dmitry Vrublevskis",
-            "email": "d.vrublevskis@gmail.com"
+            "name": "Dmitry Vrublevskis"
         }
     ],
     "minimum-stability": "stable",

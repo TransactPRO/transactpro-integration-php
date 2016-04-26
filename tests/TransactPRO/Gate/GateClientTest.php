@@ -166,6 +166,95 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
         $this->assertUnsuccessfulResponse($response);
     }
 
+    public function testInitP2P()
+    {
+        $response = $this->gateClient->initP2P(array(
+            'rs'                      => 'AAAA',
+            'merchant_transaction_id' => microtime(true),
+            'user_ip'                 => '127.0.0.1',
+            'description'             => 'Test description',
+            'amount'                  => '100',
+            'currency'                => 'LVL',
+            'name_on_card'            => 'Vasyly Pupkin',
+            'street'                  => 'Main street 1',
+            'zip'                     => 'LV-0000',
+            'city'                    => 'Riga',
+            'country'                 => 'LV',
+            'state'                   => 'NA',
+            'email'                   => 'email@example.lv',
+            'phone'                   => '+371 11111111',
+            'card_bin'                => '511111',
+            'bin_name'                => 'BANK',
+            'bin_phone'               => '+371 11111111',
+            'merchant_site_url'       => 'http://www.example.com',
+            'save_card'               => '1',
+            'cardname'                => 'John DoE',
+            'recipient_name'          => 'JOHN DOE',
+            'client_birth_date'       => '29061988',
+        ));
+        $this->assertUnsuccessfulResponse($response);
+    }
+
+    public function testDoP2P()
+    {
+        $response = $this->gateClient->doP2P(array(
+            'f_extended'          => '5',
+            'init_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+            'cc_2'                => '5111111111111111',
+        ));
+        $this->assertUnsuccessfulResponse($response);
+    }
+
+    public function testDoP2POptional()
+    {
+        $response = $this->gateClient->doP2P(array(
+            'f_extended'             => '5',
+            'init_transaction_id'    => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+            'cc_2'                   => '5111111111111111',
+            'expire_2'               => '01/25',
+            'merchant_referring_url' => 'http://www.payment.example.com/id=example_referring_id',
+        ));
+        $this->assertUnsuccessfulResponse($response);
+    }
+
+    public function testInitCredit()
+    {
+        $response = $this->gateClient->initCredit(array(
+            'rs'                      => 'AAAA',
+            'merchant_transaction_id' => microtime(true),
+            'user_ip'                 => '127.0.0.1',
+            'description'             => 'Test description',
+            'amount'                  => '100',
+            'currency'                => 'LVL',
+            'name_on_card'            => 'Vasyly Pupkin',
+            'street'                  => 'Main street 1',
+            'zip'                     => 'LV-0000',
+            'city'                    => 'Riga',
+            'country'                 => 'LV',
+            'state'                   => 'NA',
+            'email'                   => 'email@example.lv',
+            'phone'                   => '+371 11111111',
+            'card_bin'                => '511111',
+            'bin_name'                => 'BANK',
+            'bin_phone'               => '+371 11111111',
+            'merchant_site_url'       => 'http://www.example.com',
+        ));
+        $this->assertUnsuccessfulResponse($response);
+    }
+
+    public function testDoCredit()
+    {
+        $response = $this->gateClient->doCredit(array(
+            'f_extended'             => '5',
+            'init_transaction_id'    => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+            'cc'                     => '5111111111111111',
+            'cvv'                    => '111',
+            'expire'                 => '01/20',
+            'merchant_referring_url' => 'http://www.payment.example.com/id=example_referring_id',
+        ));
+        $this->assertUnsuccessfulResponse($response);
+    }
+
     /**
      * @param Response $response
      */
