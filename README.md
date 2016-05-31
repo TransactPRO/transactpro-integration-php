@@ -1,5 +1,5 @@
 TransactPRO PHP integration
-===============
+================
 [![Build Status](https://travis-ci.org/TransactPRO/transactpro-integration-php.png?branch=master)](https://travis-ci.org/TransactPRO/transactpro-integration-php)
 [![Coverage Status](https://coveralls.io/repos/TransactPRO/transactpro-integration-php/badge.svg?branch=master)](https://coveralls.io/r/TransactPRO/transactpro-integration-php?branch=master)
 [![Total Downloads](https://poser.pugx.org/transact-pro/gate/downloads.png)](https://packagist.org/packages/transact-pro/gate)
