@@ -3,6 +3,7 @@
 namespace tests\TransactPRO\Gate;
 
 use TransactPRO\Gate\GateClient;
+use TransactPRO\Gate\Request\RequestExecutor;
 use TransactPRO\Gate\Response\Response;
 use tests\TransactPRO\Gate\Request\BasicRequestExecutor;
 
