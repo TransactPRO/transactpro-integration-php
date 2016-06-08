@@ -14,11 +14,7 @@ You must adopt library for your projects by yourselves, I only provide basic fun
 # Installation
 ### Composer
 Recommended way of installation is through [composer](http://getcomposer.org/).  
-`composer require transactpro/transactpro-integration-php`
-
-or
-
-Add to your composer.json:
+Run command line command `composer require transactpro/transactpro-integration-php` or add to your composer.json:
 ```javascript
 "require": {
     "transact-pro/gate": "v1.0.0"
