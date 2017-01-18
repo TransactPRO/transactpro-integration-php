@@ -56,6 +56,14 @@ class GateClient
     {
         return $this->requestExecutor;
     }
+    
+    /**
+     * @param RequestExecutorInterface $requestExecutor
+     */
+    public function setRequestExecutor($requestExecutor)
+    {
+        $this->requestExecutor = $requestExecutor;
+    }
 
     public function init(array $data)
     {

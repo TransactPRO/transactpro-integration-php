@@ -10,15 +10,18 @@ class RequestExecutor implements RequestExecutorInterface
     private $url;
     /** @var bool */
     private $verifySSL;
+    /** @var integer */
+    private $curlTimeout;
 
     /**
      * @param string $url Gateway url
      * @param bool $verifySSL
      */
-    public function __construct($url, $verifySSL = false)
+    public function __construct($url, $verifySSL = false, $curlTimeout = 30)
     {
-        $this->url       = $url;
-        $this->verifySSL = $verifySSL;
+        $this->url         = $url;
+        $this->verifySSL   = $verifySSL;
+        $this->curlTimeout = $curlTimeout;
     }
 
     /**
@@ -35,7 +38,7 @@ class RequestExecutor implements RequestExecutorInterface
         curl_setopt($ch, CURLOPT_FAILONERROR, 1);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_TIMEOUT, $this->curlTimeout);
         curl_setopt($ch, CURLOPT_POST, 1);
         
         if ($this->verifySSL) {

@@ -3,6 +3,7 @@
 namespace tests\TransactPRO\Gate;
 
 use TransactPRO\Gate\GateClient;
+use TransactPRO\Gate\Request\RequestExecutor;
 use TransactPRO\Gate\Response\Response;
 use tests\TransactPRO\Gate\Request\BasicRequestExecutor;
 
@@ -22,6 +23,12 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
             'verifySSL' => false
         );
         $this->gateClient = new GateClient($this->accessData);
+        
+        $accessData = $this->gateClient->getAccessData();
+        $requestExecutor = new RequestExecutor($accessData['apiUrl'], $accessData['verifySSL'], 5);
+        
+        $this->gateClient->setRequestExecutor($requestExecutor);
+        
         parent::setUp();
     }
 
@@ -41,6 +48,13 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
     public function testItCanBeInitializedWithCustomRequestExecutor()
     {
         $gateClient = new GateClient($this->accessData, new BasicRequestExecutor('', false));
+        $this->assertInstanceOf('tests\TransactPRO\Gate\Request\BasicRequestExecutor', $gateClient->getRequestExecutor());
+    }
+    
+    public function testRequestExecutorSetter()
+    {
+        $gateClient = new GateClient($this->accessData);
+        $gateClient->setRequestExecutor(new BasicRequestExecutor('', false));
         $this->assertInstanceOf('tests\TransactPRO\Gate\Request\BasicRequestExecutor', $gateClient->getRequestExecutor());
     }
 
