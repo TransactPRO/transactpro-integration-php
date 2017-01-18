@@ -6,10 +6,13 @@ class InitDataBuilder extends Builder
 {
     public function build()
     {
+        // REMOTE_ADDR key is missing in CLI.
+        $remoteAddress = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '127.0.0.1';
+        
         return array(
             'rs'                      => $this->getField('rs'),
             'merchant_transaction_id' => $this->getField('merchant_transaction_id'),
-            'user_ip'                 => $this->getField('user_ip', $_SERVER['REMOTE_ADDR']),
+            'user_ip'                 => $this->getField('user_ip', $remoteAddress),
             'description'             => $this->getField('description'),
             'amount'                  => $this->getField('amount'),
             'currency'                => $this->getField('currency'),
