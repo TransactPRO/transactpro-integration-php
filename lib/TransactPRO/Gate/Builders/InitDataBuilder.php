@@ -8,7 +8,7 @@ class InitDataBuilder extends Builder
     {
         // REMOTE_ADDR key is missing in CLI.
         $remoteAddress = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '127.0.0.1';
-        
+
         return array(
             'rs'                      => $this->getField('rs'),
             'merchant_transaction_id' => $this->getField('merchant_transaction_id'),
@@ -28,7 +28,9 @@ class InitDataBuilder extends Builder
             'bin_name'                => $this->getField('bin_name'),
             'bin_phone'               => $this->getField('bin_phone'),
             'merchant_site_url'       => $this->getField('merchant_site_url'),
-            'save_card'               => $this->getField('save_card')
+            'save_card'               => $this->getField('save_card'),
+            'custom_return_url'       => $this->getField('custom_return_url'),
+            'custom_callback_url'     => $this->getField('custom_callback_url')
         );
     }
 
