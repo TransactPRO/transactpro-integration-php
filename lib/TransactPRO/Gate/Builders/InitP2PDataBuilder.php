@@ -9,7 +9,7 @@ class InitP2PDataBuilder extends InitDataBuilder
         return array(
             'rs'                      => $this->getField('rs'),
             'merchant_transaction_id' => $this->getField('merchant_transaction_id'),
-            'user_ip'                 => $this->getField('user_ip', $_SERVER['REMOTE_ADDR']),
+            'user_ip'                 => $this->getField('user_ip', $this->getRemoteAddress()),
             'description'             => $this->getField('description'),
             'amount'                  => $this->getField('amount'),
             'currency'                => $this->getField('currency'),
