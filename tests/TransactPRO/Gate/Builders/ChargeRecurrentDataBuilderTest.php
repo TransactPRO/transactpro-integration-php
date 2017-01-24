@@ -2,17 +2,14 @@
 
 namespace tests\TransactPRO\Gate\Builders;
 
-class DoP2PDataBuilder extends BuilderTestCase
+class ChargeRecurrentDataBuilderTest extends BuilderTestCase
 {
     protected function setUp()
     {
-        $this->builderClass = 'TransactPRO\Gate\Builders\ChargeDataBuilder';
+        $this->builderClass = 'TransactPRO\Gate\Builders\ChargeRecurrentDataBuilder';
         $this->data         = array(
             'f_extended'                => '5',
             'init_transaction_id'       => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
-            'cc_2'                      => '5111111111111111',
-            'expire2'                   => '111',
-            'merchant_referring_url'    => 'http://www.paymentform.example.com',
         );
         $this->buildData    = $this->data;
     }
@@ -21,7 +18,6 @@ class DoP2PDataBuilder extends BuilderTestCase
     {
         return array(
             array('init_transaction_id'),
-            array('cc_2')
         );
     }
 
@@ -29,8 +25,6 @@ class DoP2PDataBuilder extends BuilderTestCase
     {
         return array(
             array('f_extended', 5),
-            array('expire2'),
-            array('merchant_referring_url'),
         );
     }
 }

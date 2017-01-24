@@ -155,7 +155,7 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
         ));
         $this->assertUnsuccessfulResponse($response);
     }
-    
+
     public function testStatusRequestMerchantID()
     {
         $response = $this->gateClient->statusRequestMerchantID(array(
@@ -255,6 +255,27 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
         $this->assertUnsuccessfulResponse($response);
     }
 
+    public function testInitRecurrent()
+    {
+        $response = $this->gateClient->initRecurrent(array(
+            'rs'                      => 'AAAA',
+            'original_init_id'        => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+            'merchant_transaction_id' => microtime(true),
+            'amount'                  => '100',
+            'description'             => 'Test description',
+        ));
+        $this->assertUnsuccessfulResponse($response);
+    }
+
+    public function testChargeRecurrent()
+    {
+        $response = $this->gateClient->chargeRecurrent(array(
+            'f_extended'             => '5',
+            'init_transaction_id'    => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+        ));
+        $this->assertUnsuccessfulResponse($response);
+    }
+
     /**
      * @param Response $response
      */
@@ -265,4 +286,3 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
         $this->assertContains("timed out", $response->getResponseContent());
     }
 }
- 

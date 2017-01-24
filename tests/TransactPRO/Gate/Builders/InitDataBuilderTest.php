@@ -6,7 +6,6 @@ class InitDataBuilderTest extends BuilderTestCase
 {
     public function setUp()
     {
-        $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
         $this->builderClass     = 'TransactPRO\Gate\Builders\InitDataBuilder';
         $this->data             = array(
             'rs'                      => 'AAAA',
@@ -27,7 +26,10 @@ class InitDataBuilderTest extends BuilderTestCase
             'bin_name'                => 'BANK',
             'bin_phone'               => '+371 11111111',
             'merchant_site_url'       => 'http://www.example.com',
-            'save_card'               => '1'
+            'save_card'               => '1',
+            'custom_return_url'       => 'http://www.example.com',
+            'custom_callback_url'     => 'http://www.example.com',
+            'merchant_referring_name' => 'dynamic_descriptor',
         );
         $this->buildData        = $this->data;
     }
@@ -42,7 +44,7 @@ class InitDataBuilderTest extends BuilderTestCase
             array('currency'),
             array('name_on_card'),
             array('phone'),
-            array('merchant_site_url')
+            array('merchant_site_url'),
         );
     }
 
@@ -53,9 +55,10 @@ class InitDataBuilderTest extends BuilderTestCase
             array('state', 'NA'),
             array('card_bin', ''),
             array('bin_name', ''),
-            array('bin_phone', '')
+            array('bin_phone', ''),
+            array('custom_return_url'),
+            array('custom_callback_url'),
+            array('merchant_referring_name'),
         );
     }
-
 }
- 

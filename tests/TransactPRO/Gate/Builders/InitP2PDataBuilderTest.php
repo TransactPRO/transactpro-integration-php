@@ -2,12 +2,11 @@
 
 namespace tests\TransactPRO\Gate\Builders;
 
-class InitP2PDataBuilder extends BuilderTestCase
+class InitP2PDataBuilderTest extends BuilderTestCase
 {
     public function setUp()
     {
-        $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
-        $this->builderClass     = 'TransactPRO\Gate\Builders\InitDataBuilder';
+        $this->builderClass     = 'TransactPRO\Gate\Builders\InitP2PDataBuilder';
         $this->data             = array(
             'rs'                      => 'AAAA',
             'merchant_transaction_id' => microtime(true),
@@ -59,7 +58,7 @@ class InitP2PDataBuilder extends BuilderTestCase
             array('state', 'NA'),
             array('card_bin', ''),
             array('bin_name', ''),
-            array('bin_phone', '')
+            array('bin_phone', ''),
         );
     }
 }

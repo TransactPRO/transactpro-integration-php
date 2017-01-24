@@ -10,7 +10,7 @@ class StatusRequestDataBuilderTest extends BuilderTestCase
         $this->data         = array(
             'request_type'        => 'transaction_status',
             'init_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
-            'f_extended'          => '5'
+            'f_extended'          => '5',
         );
         $this->buildData    = $this->data;
     }
@@ -18,7 +18,7 @@ class StatusRequestDataBuilderTest extends BuilderTestCase
     public function getMandatoryFields()
     {
         return array(
-            array('init_transaction_id')
+            array('init_transaction_id'),
         );
     }
 
@@ -26,8 +26,7 @@ class StatusRequestDataBuilderTest extends BuilderTestCase
     {
         return array(
             array('request_type', 'transaction_status'),
-            array('f_extended', '5')
+            array('f_extended', '5'),
         );
     }
 }
- 
