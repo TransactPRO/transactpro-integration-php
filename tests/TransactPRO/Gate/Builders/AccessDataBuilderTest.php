@@ -13,13 +13,13 @@ class AccessDataBuilderTest extends BuilderTestCase
             'apiUrl'    => 'https://www.payment-api.com',
             'guid'      => 'AAAA-AAAA-AAAA-AAAA',
             'pwd'       => '111',
-            'verifySSL' => true
+            'verifySSL' => true,
         );
         $this->buildData    = array(
             'apiUrl'    => 'https://www.payment-api.com',
             'guid'      => 'AAAA-AAAA-AAAA-AAAA',
             'pwd'       => sha1('111'),
-            'verifySSL' => true
+            'verifySSL' => true,
         );
     }
 
@@ -35,7 +35,7 @@ class AccessDataBuilderTest extends BuilderTestCase
         return array(
             array('apiUrl'),
             array('guid'),
-            array('pwd')
+            array('pwd'),
         );
     }
 
@@ -46,4 +46,3 @@ class AccessDataBuilderTest extends BuilderTestCase
         );
     }
 }
- 

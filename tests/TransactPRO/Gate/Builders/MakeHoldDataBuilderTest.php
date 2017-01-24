@@ -2,8 +2,4 @@
 
 namespace tests\TransactPRO\Gate\Builders;
 
-class MakeHoldDataBuilderTest extends ChargeDataBuilderTest
-{
-
-}
- 
+class MakeHoldDataBuilderTest extends ChargeDataBuilderTest{}

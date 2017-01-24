@@ -20,7 +20,7 @@ class RefundDataBuilderTest extends BuilderTestCase
     {
         return array(
             array('init_transaction_id'),
-            array('amount_to_refund')
+            array('amount_to_refund'),
         );
     }
 
@@ -45,4 +45,3 @@ class RefundDataBuilderTest extends BuilderTestCase
         $this->assertEquals($data, $builder->build());
     }
 }
- 

@@ -2,11 +2,11 @@
 
 namespace tests\TransactPRO\Gate\Builders;
 
-class DoP2PDataBuilder extends BuilderTestCase
+class DoP2PDataBuilderTest extends BuilderTestCase
 {
     protected function setUp()
     {
-        $this->builderClass = 'TransactPRO\Gate\Builders\ChargeDataBuilder';
+        $this->builderClass = 'TransactPRO\Gate\Builders\DoP2PDataBuilder';
         $this->data         = array(
             'f_extended'                => '5',
             'init_transaction_id'       => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
@@ -21,7 +21,7 @@ class DoP2PDataBuilder extends BuilderTestCase
     {
         return array(
             array('init_transaction_id'),
-            array('cc_2')
+            array('cc_2'),
         );
     }
 
