@@ -30,7 +30,8 @@ class InitDataBuilder extends Builder
             'merchant_site_url'       => $this->getField('merchant_site_url'),
             'save_card'               => $this->getField('save_card'),
             'custom_return_url'       => $this->getField('custom_return_url'),
-            'custom_callback_url'     => $this->getField('custom_callback_url')
+            'custom_callback_url'     => $this->getField('custom_callback_url'),
+            'merchant_referring_name' => $this->getField('merchant_referring_name')
         );
     }
 
