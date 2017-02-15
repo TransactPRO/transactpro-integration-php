@@ -289,7 +289,7 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
         $this->assertUnsuccessfulResponse($response);
     }
 
-    public function testChargeCredit()
+    public function testDoRecurrentCredit()
     {
         $response = $this->gateClient->doRecurrentCredit(array(
             'f_extended'             => '5',
@@ -310,7 +310,7 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
         $this->assertUnsuccessfulResponse($response);
     }
 
-    public function testChargeP2P()
+    public function testDoRecurrentP2P()
     {
         $response = $this->gateClient->doRecurrentP2P(array(
             'f_extended'             => '5',
