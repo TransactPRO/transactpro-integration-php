@@ -5,6 +5,7 @@ namespace tests\TransactPRO\Gate;
 use TransactPRO\Gate\GateClient;
 use TransactPRO\Gate\Response\Response;
 use tests\TransactPRO\Gate\Request\BasicRequestExecutor;
+use TransactPRO\Gate\Request\RequestExecutor;
 
 class GateClientTest extends \PHPUnit_Framework_TestCase
 {
@@ -35,13 +36,13 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
     public function testItCanBeInitializedWithDefaultRequestExecutor()
     {
         $gateClient = new GateClient($this->accessData);
-        $this->assertInstanceOf('TransactPRO\Gate\Request\RequestExecutor', $gateClient->getRequestExecutor());
+        $this->assertInstanceOf(RequestExecutor::class, $gateClient->getRequestExecutor());
     }
 
     public function testItCanBeInitializedWithCustomRequestExecutor()
     {
         $gateClient = new GateClient($this->accessData, new BasicRequestExecutor('', false));
-        $this->assertInstanceOf('tests\TransactPRO\Gate\Request\BasicRequestExecutor', $gateClient->getRequestExecutor());
+        $this->assertInstanceOf(BasicRequestExecutor::class, $gateClient->getRequestExecutor());
     }
 
     public function testInit()
@@ -281,8 +282,8 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
      */
     private function assertUnsuccessfulResponse($response)
     {
-        $this->assertInstanceOf('TransactPRO\Gate\Response\Response', $response, 'Result must be instance of TransactPRO\Gate\Response\Response class.');
+        $this->assertInstanceOf(Response::class, $response, 'Result must be instance of TransactPRO\Gate\Response\Response class.');
         $this->assertFalse($response->isSuccessful(), 'Response must be unsuccessful');
-        $this->assertContains("timed out", $response->getResponseContent());
+        $this->assertContains('timed out', $response->getResponseContent());
     }
 }
