@@ -276,6 +276,48 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
         $this->assertUnsuccessfulResponse($response);
     }
 
+    public function testInitRecurrentCredit()
+    {
+        $response = $this->gateClient->initRecurrentCredit(array(
+            'rs'                      => 'AAAA',
+            'original_init_id'        => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+            'merchant_transaction_id' => microtime(true),
+            'amount'                  => '100',
+            'description'             => 'Test description',
+        ));
+        $this->assertUnsuccessfulResponse($response);
+    }
+
+    public function testDoRecurrentCredit()
+    {
+        $response = $this->gateClient->doRecurrentCredit(array(
+            'f_extended'             => '5',
+            'init_transaction_id'    => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+        ));
+        $this->assertUnsuccessfulResponse($response);
+    }
+
+    public function testInitRecurrentP2P()
+    {
+        $response = $this->gateClient->initRecurrentP2P(array(
+            'rs'                      => 'AAAA',
+            'original_init_id'        => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+            'merchant_transaction_id' => microtime(true),
+            'amount'                  => '100',
+            'description'             => 'Test description',
+        ));
+        $this->assertUnsuccessfulResponse($response);
+    }
+
+    public function testDoRecurrentP2P()
+    {
+        $response = $this->gateClient->doRecurrentP2P(array(
+            'f_extended'             => '5',
+            'init_transaction_id'    => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+        ));
+        $this->assertUnsuccessfulResponse($response);
+    }
+
     /**
      * @param Response $response
      */
@@ -283,6 +325,6 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('TransactPRO\Gate\Response\Response', $response, 'Result must be instance of TransactPRO\Gate\Response\Response class.');
         $this->assertFalse($response->isSuccessful(), 'Response must be unsuccessful');
-        $this->assertContains("timed out", $response->getResponseContent());
+        $this->assertContains('timed out', $response->getResponseContent());
     }
 }

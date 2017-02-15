@@ -170,6 +170,120 @@ $response = $gateClient->statusRequest(array(
     'f_extended'          => '5'
 ));
 ```
+
+#### Init P2P transactions
+```php
+$response = $gateClient->initP2P(array(
+    'rs'                      => 'AAAA',
+    'merchant_transaction_id' => microtime(true),
+    'user_ip'                 => '127.0.0.1',
+    'description'             => 'Test description',
+    'amount'                  => '100',
+    'currency'                => 'LVL',
+    'name_on_card'            => 'Vasyly Pupkin',
+    'street'                  => 'Main street 1',
+    'zip'                     => 'LV-0000',
+    'city'                    => 'Riga',
+    'country'                 => 'LV',
+    'state'                   => 'NA',
+    'email'                   => 'email@example.lv',
+    'phone'                   => '+371 11111111',
+    'card_bin'                => '511111',
+    'bin_name'                => 'BANK',
+    'bin_phone'               => '+371 11111111',
+    'merchant_site_url'       => 'http://www.example.com',
+    'save_card'               => '1',
+    'cardname'                => 'John Doe',
+    'recipient_name'          => 'Jane Doe',
+    'client_birth_date'       => '29061988',
+));
+```
+
+#### Do P2P transactions
+```php
+$response = $gateClient->doP2P(array(
+    'f_extended'          => '5',
+    'init_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+    'cc_2'                => '5111111111111111',
+));
+```
+
+#### Init Credit transactions
+```php
+$response = $gateClient->initP2P(array(
+    'rs'                      => 'AAAA',
+    'merchant_transaction_id' => microtime(true),
+    'user_ip'                 => '127.0.0.1',
+    'description'             => 'Test description',
+    'amount'                  => '100',
+    'currency'                => 'LVL',
+    'name_on_card'            => 'Vasyly Pupkin',
+    'street'                  => 'Main street 1',
+    'zip'                     => 'LV-0000',
+    'city'                    => 'Riga',
+    'country'                 => 'LV',
+    'state'                   => 'NA',
+    'email'                   => 'email@example.lv',
+    'phone'                   => '+371 11111111',
+    'card_bin'                => '511111',
+    'bin_name'                => 'BANK',
+    'bin_phone'               => '+371 11111111',
+    'merchant_site_url'       => 'http://www.example.com',
+));
+```
+
+#### Do Credit transactions
+```php
+$response = $gateClient->doP2P(array(
+    'f_extended'             => '5',
+    'init_transaction_id'    => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+    'cc'                     => '5111111111111111',
+    'cvv'                    => '111',
+    'expire'                 => '01/20',
+    'merchant_referring_url' => 'http://www.payment.example.com/id=example_referring_id',
+));
+```
+
+#### Initial recurrent transaction (usual, P2P, Credit)
+For usual Recurrent use:
+- initRecurrent 
+
+For P2P recurrent use:
+- initRecurrentCredit
+
+For Credit recurrent use:
+- initRecurrentP2P
+
+``Fields in these requests are same, read documetation for details.``
+
+Example:
+```php
+$response = $gateClient->initRecurrent(array(
+    'rs'                      => 'AAAA',
+    'original_init_id'        => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+    'merchant_transaction_id' => microtime(true),
+    'amount'                  => '100',
+    'description'             => 'Test description',
+));
+```
+### Charge recurrent transaction
+For usual Recurrent use:
+- chargeRecurrent 
+
+For P2P recurrent use:
+- doRecurrentCredit
+
+For Credit recurrent use:
+- doRecurrentP2P
+
+Example:
+```php
+$response = $gateClient->chargeRecurrent(array(
+    'f_extended'             => '5',
+    'init_transaction_id'    => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+));
+```
+
 ### Response
 Response instance returned as action result.
 

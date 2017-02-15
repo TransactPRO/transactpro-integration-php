@@ -9,7 +9,12 @@ abstract class Builder
     /** @var array */
     protected $data;
 
-    final function __construct(array $data)
+    /**
+     * Builder constructor.
+     *
+     * @param array $data
+     */
+    public final function __construct(array $data)
     {
         $this->data = $data;
         $this->checkData();
