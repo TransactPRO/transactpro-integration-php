@@ -27,7 +27,7 @@ use TransactPRO\Gate\Request\RequestExecutor;
 use TransactPRO\Gate\Request\RequestExecutorInterface;
 
 /**
- * Basic client
+ * Basic client of TransactPRO Gateway API
  *
  * @package TransactPRO\Gate
  */
