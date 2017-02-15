@@ -2,7 +2,7 @@
 
 function transactproIntegrationAutoload($className)
 {
-    if (strpos($className, "TransactPRO") === 0) {
+    if (strpos($className, 'TransactPRO') === 0) {
         $className = ltrim($className, '\\');
         $fileName  = '';
         $namespace = '';
