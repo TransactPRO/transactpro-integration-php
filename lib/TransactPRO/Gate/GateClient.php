@@ -7,13 +7,17 @@ use TransactPRO\Gate\Builders\CancelDmsDataBuilder;
 use TransactPRO\Gate\Builders\ChargeDataBuilder;
 use TransactPRO\Gate\Builders\ChargeHoldDataBuilder;
 use TransactPRO\Gate\Builders\ChargeRecurrentDataBuilder;
+use TransactPRO\Gate\Builders\DoRecurrentCreditDataBuilder;
+use TransactPRO\Gate\Builders\DoRecurrentP2PDataBuilder;
 use TransactPRO\Gate\Builders\InitDataBuilder;
 use TransactPRO\Gate\Builders\InitDmsDataBuilder;
 use TransactPRO\Gate\Builders\InitP2PDataBuilder;
 use TransactPRO\Gate\Builders\InitCreditDataBuilder;
 use TransactPRO\Gate\Builders\DoP2PDataBuilder;
 use TransactPRO\Gate\Builders\DoCreditDataBuilder;
+use TransactPRO\Gate\Builders\InitRecurrentCreditDataBuilder;
 use TransactPRO\Gate\Builders\InitRecurrentDataBuilder;
+use TransactPRO\Gate\Builders\InitRecurrentP2PDataBuilder;
 use TransactPRO\Gate\Builders\MakeHoldDataBuilder;
 use TransactPRO\Gate\Builders\RefundDataBuilder;
 use TransactPRO\Gate\Builders\StatusRequestDataBuilder;
@@ -278,6 +282,62 @@ class GateClient
         $buildData = $this->buildData(new ChargeRecurrentDataBuilder($data));
 
         return $this->requestExecutor->executeRequest('charge_recurrent', $buildData);
+    }
+
+    /**
+     * @docReference 6.3 SUBSEQUENT RECURRENT TRANSACTIONS
+     *
+     * @param array $data
+     *
+     * @return Response\Response
+     */
+    public function initRecurrentCredit(array $data)
+    {
+        $buildData = $this->buildData(new InitRecurrentCreditDataBuilder($data));
+
+        return $this->requestExecutor->executeRequest('init_recurrent_credit', $buildData);
+    }
+
+    /**
+     * @docReference 6.3 SUBSEQUENT RECURRENT TRANSACTIONS
+     *
+     * @param array $data
+     *
+     * @return Response\Response
+     */
+    public function doRecurrentCredit(array $data)
+    {
+        $buildData = $this->buildData(new DoRecurrentCreditDataBuilder($data));
+
+        return $this->requestExecutor->executeRequest('do_recurrent_credit', $buildData);
+    }
+
+    /**
+     * @docReference 6.3 SUBSEQUENT RECURRENT TRANSACTIONS
+     *
+     * @param array $data
+     *
+     * @return Response\Response
+     */
+    public function initRecurrentP2P(array $data)
+    {
+        $buildData = $this->buildData(new InitRecurrentP2PDataBuilder($data));
+
+        return $this->requestExecutor->executeRequest('init_recurrent_p2p', $buildData);
+    }
+
+    /**
+     * @docReference 6.3 SUBSEQUENT RECURRENT TRANSACTIONS
+     *
+     * @param array $data
+     *
+     * @return Response\Response
+     */
+    public function doRecurrentP2P(array $data)
+    {
+        $buildData = $this->buildData(new DoRecurrentP2PDataBuilder($data));
+
+        return $this->requestExecutor->executeRequest('do_recurrent_p2p', $buildData);
     }
 
     /**
