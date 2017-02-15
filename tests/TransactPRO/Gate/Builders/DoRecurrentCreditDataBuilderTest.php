@@ -2,13 +2,11 @@
 
 namespace tests\TransactPRO\Gate\Builders;
 
-use TransactPRO\Gate\Builders\DoRecurrentCreditDataBuilder;
-
 class DoRecurrentCreditDataBuilderTest extends BuilderTestCase
 {
     protected function setUp()
     {
-        $this->builderClass = DoRecurrentCreditDataBuilder::class;
+        $this->builderClass = 'TransactPRO\Gate\Builders\DoRecurrentCreditDataBuilder';
         $this->data         = array(
             'f_extended'                => '5',
             'init_transaction_id'       => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',

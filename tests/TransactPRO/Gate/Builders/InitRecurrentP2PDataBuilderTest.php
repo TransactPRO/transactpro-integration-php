@@ -2,13 +2,11 @@
 
 namespace tests\TransactPRO\Gate\Builders;
 
-use TransactPRO\Gate\Builders\InitRecurrentP2PDataBuilder;
-
 class InitRecurrentP2PDataBuilderTest extends BuilderTestCase
 {
     public function setUp()
     {
-        $this->builderClass     = InitRecurrentP2PDataBuilder::class;
+        $this->builderClass     = 'TransactPRO\Gate\Builders\InitRecurrentP2PDataBuilder';
         $this->data             = array(
             'rs'                      => 'AAAA',
             'original_init_id'        => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
