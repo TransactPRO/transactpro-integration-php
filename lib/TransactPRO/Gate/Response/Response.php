@@ -18,10 +18,10 @@ class Response
     private $responseContent;
 
     /**
-     * @param int $responseStatus
+     * @param int    $responseStatus
      * @param string $responseContent
      */
-    function __construct($responseStatus, $responseContent)
+    public function __construct($responseStatus, $responseContent)
     {
         switch ($responseStatus) {
             case self::STATUS_SUCCESS:
@@ -41,7 +41,7 @@ class Response
      */
     public function isSuccessful()
     {
-        return $this->responseStatus == self::STATUS_SUCCESS;
+        return $this->responseStatus === self::STATUS_SUCCESS;
     }
 
     /**
@@ -61,29 +61,37 @@ class Response
     }
 
     /**
+     * Get parsed response of operation
+     *
      * @return array
      */
     public function getParsedResponse()
     {
-        if ($this->getResponseStatus() == self::STATUS_ERROR) return array();
+        $parsedResponse = [];
 
-        $parsedResponse = array();
-        $keyValuePairs  = explode("~", $this->responseContent);
-        foreach ($keyValuePairs as $keyValuePair) {
-            $keyValue                     = explode(":", $keyValuePair, 2);
-            $parsedResponse[$keyValue[0]] = isset($keyValue[1]) ? $keyValue[1] : '';
+        if ($this->getResponseStatus() !== self::STATUS_ERROR) {
+            $parsedResponse = array();
+            $keyValuePairs = explode('~', $this->responseContent);
+
+            foreach ($keyValuePairs as $keyValuePair) {
+                $keyValue = explode(':', $keyValuePair, 2);
+                $parsedResponse[ $keyValue[0] ] = isset($keyValue[1]) ? $keyValue[1] : '';
+            }
         }
 
         return $parsedResponse;
     }
 
     /**
-     * @return bool
+     * Is transaction successful
+     *
+     * @return bool true|false
      */
     public function getTransactionStatus()
     {
         $parsedResponse = $this->getParsedResponse();
-        return isset($parsedResponse['Status']) && $parsedResponse['Status'] == 'Success';
+
+        return isset($parsedResponse['Status']) && $parsedResponse['Status'] === 'Success';
     }
 
 }
