@@ -67,7 +67,7 @@ class Response
      */
     public function getParsedResponse()
     {
-        $parsedResponse = [];
+        $parsedResponse = array();
 
         if ($this->getResponseStatus() !== self::STATUS_ERROR) {
             $parsedResponse = array();
