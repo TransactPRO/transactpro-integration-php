@@ -318,6 +318,97 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
         $this->assertUnsuccessfulResponse($response);
     }
 
+    public function testInitStoreCardSms()
+    {
+        $response = $this->gateClient->initStoreCardSms(array(
+            'rs'                      => 'AAAA',
+            'merchant_transaction_id' => microtime(true),
+            'user_ip'                 => '127.0.0.1',
+            'description'             => 'Test description',
+            'amount'                  => '100',
+            'currency'                => 'LVL',
+            'name_on_card'            => 'Vasyly Pupkin',
+            'street'                  => 'Main street 1',
+            'zip'                     => 'LV-0000',
+            'city'                    => 'Riga',
+            'country'                 => 'LV',
+            'state'                   => 'NA',
+            'email'                   => 'email@example.lv',
+            'phone'                   => '+371 11111111',
+            'card_bin'                => '511111',
+            'bin_name'                => 'BANK',
+            'bin_phone'               => '+371 11111111',
+            'merchant_site_url'       => 'http://www.example.com',
+            'save_card'               => '1'
+        ));
+        $this->assertUnsuccessfulResponse($response);
+    }
+
+    public function testInitStoreCardCredit()
+    {
+        $response = $this->gateClient->initStoreCardCredit(array(
+            'rs'                      => 'AAAA',
+            'merchant_transaction_id' => microtime(true),
+            'user_ip'                 => '127.0.0.1',
+            'description'             => 'Test description',
+            'amount'                  => '100',
+            'currency'                => 'LVL',
+            'name_on_card'            => 'Vasyly Pupkin',
+            'street'                  => 'Main street 1',
+            'zip'                     => 'LV-0000',
+            'city'                    => 'Riga',
+            'country'                 => 'LV',
+            'state'                   => 'NA',
+            'email'                   => 'email@example.lv',
+            'phone'                   => '+371 11111111',
+            'card_bin'                => '511111',
+            'bin_name'                => 'BANK',
+            'bin_phone'               => '+371 11111111',
+            'merchant_site_url'       => 'http://www.example.com',
+        ));
+        $this->assertUnsuccessfulResponse($response);
+    }
+
+    public function testInitStoreCardP2P()
+    {
+        $response = $this->gateClient->initStoreCardP2P(array(
+            'rs'                      => 'AAAA',
+            'merchant_transaction_id' => microtime(true),
+            'user_ip'                 => '127.0.0.1',
+            'description'             => 'Test description',
+            'amount'                  => '100',
+            'currency'                => 'LVL',
+            'name_on_card'            => 'Vasyly Pupkin',
+            'street'                  => 'Main street 1',
+            'zip'                     => 'LV-0000',
+            'city'                    => 'Riga',
+            'country'                 => 'LV',
+            'state'                   => 'NA',
+            'email'                   => 'email@example.lv',
+            'phone'                   => '+371 11111111',
+            'card_bin'                => '511111',
+            'bin_name'                => 'BANK',
+            'bin_phone'               => '+371 11111111',
+            'merchant_site_url'       => 'http://www.example.com',
+            'save_card'               => '1',
+            'cardname'                => 'John DoE',
+            'recipient_name'          => 'JOHN DOE',
+            'client_birth_date'       => '29061988',
+        ));
+        $this->assertUnsuccessfulResponse($response);
+    }
+
+    public function testStoreCard()
+    {
+        $response = $this->gateClient->storeCard(array(
+            'f_extended'          => '5',
+            'init_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+            'cc'                  => '5111111111111111',
+            'expire'              => '01/20'
+        ));
+        $this->assertUnsuccessfulResponse($response);
+    }
+
     /**
      * @param Response $response
      */

@@ -341,6 +341,66 @@ class GateClient
     }
 
     /**
+     * @docReference 6.3 SUBSEQUENT RECURRENT TRANSACTIONS
+     *
+     * @param array $data
+     *
+     * @return Response\Response
+     */
+    public function initStoreCardSms(array $data)
+    {
+        $buildData = $this->buildData(new InitDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('init_store_card_sms', $buildData);
+
+        return $response;
+    }
+
+    /**
+     * @docReference 6.3 SUBSEQUENT RECURRENT TRANSACTIONS
+     *
+     * @param array $data
+     *
+     * @return Response\Response
+     */
+    public function initStoreCardCredit(array $data)
+    {
+        $buildData = $this->buildData(new InitCreditDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('init_store_card_credit', $buildData);
+
+        return $response;
+    }
+
+    /**
+     * @docReference 6.3 SUBSEQUENT RECURRENT TRANSACTIONS
+     *
+     * @param array $data
+     *
+     * @return Response\Response
+     */
+    public function initStoreCardP2P(array $data)
+    {
+        $buildData = $this->buildData(new InitP2PDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('init_store_card_p2p', $buildData);
+
+        return $response;
+    }
+
+    /**
+     * @docReference 6.3 SUBSEQUENT RECURRENT TRANSACTIONS
+     *
+     * @param array $data
+     *
+     * @return Response\Response
+     */
+    public function storeCard(array $data)
+    {
+        $buildData = $this->buildData(new ChargeDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('store_card', $buildData);
+
+        return $response;
+    }
+
+    /**
      * Build base data for requests
      *
      * @param Builder $builder
