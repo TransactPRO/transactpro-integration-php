@@ -9,6 +9,7 @@ class ChargeHoldDataBuilderTest extends BuilderTestCase
         $this->builderClass = 'TransactPRO\Gate\Builders\ChargeHoldDataBuilder';
         $this->data = array(
             'init_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+            'charge_amount' => '100',
         );
         $this->buildData = $this->data;
     }
@@ -20,11 +21,10 @@ class ChargeHoldDataBuilderTest extends BuilderTestCase
         );
     }
 
-    public function testNonMandatoryFields($field = false, $expectedFieldValue = false)
-    {
-    }
-
     public function getNonMandatoryFields()
     {
+        return array(
+            array('charge_amount', ''),
+        );
     }
 }
