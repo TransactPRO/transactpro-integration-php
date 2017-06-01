@@ -15,25 +15,15 @@ test:
         coverage: build/logs
         
 complete:
+    email:
+        default_mailto_address: vl@tpro.lv
     shell:
-        - echo "Running 'complete' stage"
+        - echo "Running 'complete' stage (emails)"
         
 success:
     shell:
         - echo "Running 'success' stage"
-    hipchat_notify:
-        authToken: 5c61bb64ce591250062db91d6ca1c3
-        room: 269893
-        message: <b>%PROJECT_TITLE%</b> - build <a href="%BUILD_URI%">%BUILD%</a> succeed!
-        color: green
-        notify: true
         
 failure:
     shell:
         - echo "Running 'failure' stage"
-    hipchat_notify:
-        authToken: 5c61bb64ce591250062db91d6ca1c3
-        room: 269893
-        message: <b>%PROJECT_TITLE%</b> - build <a href="%BUILD_URI%">%BUILD%</a> failed!
-        color: red
-        notify: true
