@@ -12,12 +12,14 @@ use TransactPRO\Gate\Builders\DoRecurrentP2PDataBuilder;
 use TransactPRO\Gate\Builders\InitDataBuilder;
 use TransactPRO\Gate\Builders\InitDmsDataBuilder;
 use TransactPRO\Gate\Builders\InitP2PDataBuilder;
+use TransactPRO\Gate\Builders\ChargeB2PDataBuilder;
 use TransactPRO\Gate\Builders\InitCreditDataBuilder;
 use TransactPRO\Gate\Builders\DoP2PDataBuilder;
 use TransactPRO\Gate\Builders\DoCreditDataBuilder;
 use TransactPRO\Gate\Builders\InitRecurrentCreditDataBuilder;
 use TransactPRO\Gate\Builders\InitRecurrentDataBuilder;
 use TransactPRO\Gate\Builders\InitRecurrentP2PDataBuilder;
+use TransactPRO\Gate\Builders\InitB2PDataBuilder;
 use TransactPRO\Gate\Builders\MakeHoldDataBuilder;
 use TransactPRO\Gate\Builders\RefundDataBuilder;
 use TransactPRO\Gate\Builders\StatusRequestDataBuilder;
@@ -226,6 +228,33 @@ class GateClient
         $buildData = $this->buildData(new DoP2PDataBuilder($data));
 
         return $this->requestExecutor->executeRequest('do_p2p', $buildData);
+    }
+
+
+    /**
+     * 2.1.14 B2P TRANSACTIONS
+     * @param array $data
+     * @return Response\Response
+     */
+    public function initB2P(array $data)
+    {
+        $buildData = $this->buildData(new InitB2PDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('init_b2p', $buildData);
+
+        return $response;
+    }
+
+    /**
+     * 2.1.15 B2P transactions requirements on final request URL
+     * @param array $data
+     * @return Response\Response
+     */
+    public function chargeB2P(array $data)
+    {
+        $buildData = $this->buildData(new ChargeB2PDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('charge_b2p', $buildData);
+
+        return $response;
     }
 
     /**
