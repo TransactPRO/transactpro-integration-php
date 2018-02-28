@@ -208,6 +208,41 @@ $response = $gateClient->doP2P(array(
 ));
 ```
 
+
+#### Init B2P transactions
+```php
+$response = $gateClient->initP2P(array(
+    'rs'                      => 'AAAA',
+    'merchant_transaction_id' => microtime(true),
+    'user_ip'                 => '127.0.0.1',
+    'description'             => 'Test description',
+    'amount'                  => '10',
+    'currency'                => 'RUB',
+    'name_on_card'            => 'John Doe 1',
+    'street'                  => 'Main street 1',
+    'zip'                     => 'LV-0000',
+    'city'                    => 'Riga',
+    'country'                 => 'LV',
+    'state'                   => 'NA',
+    'email'                   => 'noemail@example.lv',
+    'phone'                   => '+371 11111111',
+    'card_bin'                => '511111',
+    'bin_name'                => 'BANK',
+    'bin_phone'               => '+371 11111111',
+    'client_birth_date'       =>  '15101970',
+));
+```
+
+#### Do B2P transactions
+```php
+$response = $gateClient->chargeB2P(array(
+    'f_extended'          => '5',
+    'init_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+    'cc_2'                => '5111111111111111',
+    'expire2' => '11/22',
+));
+```
+
 #### Init Credit transactions
 ```php
 $response = $gateClient->initCredit(array(
