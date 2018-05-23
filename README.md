@@ -211,7 +211,7 @@ $response = $gateClient->doP2P(array(
 
 #### Init B2P transactions
 ```php
-$response = $gateClient->initP2P(array(
+$response = $gateClient->initB2P(array(
     'rs'                      => 'AAAA',
     'merchant_transaction_id' => microtime(true),
     'user_ip'                 => '127.0.0.1',
