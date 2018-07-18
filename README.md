@@ -154,6 +154,13 @@ $response = $gateClient->cancelDms(array(
 ));
 ```
 
+#### Cancel request
+```php
+$response = $gateClient->cancelRequest(array(
+    'init_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg'
+));
+```
+
 #### Refund
 ```php
 $response = $gateClient->refund(array(
