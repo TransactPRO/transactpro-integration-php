@@ -4,6 +4,7 @@ namespace TransactPRO\Gate;
 
 use TransactPRO\Gate\Builders\Builder;
 use TransactPRO\Gate\Builders\CancelDmsDataBuilder;
+use TransactPRO\Gate\Builders\CancelRequestDataBuilder;
 use TransactPRO\Gate\Builders\ChargeDataBuilder;
 use TransactPRO\Gate\Builders\ChargeHoldDataBuilder;
 use TransactPRO\Gate\Builders\ChargeRecurrentDataBuilder;
@@ -159,6 +160,20 @@ class GateClient
         $buildData = $this->buildData(new CancelDmsDataBuilder($data));
 
         return $this->requestExecutor->executeRequest('cancel_dms', $buildData);
+    }
+
+    /**
+     * @docReference 2.3 HOW TO CANCEL REQUEST
+     *
+     * @param array $data
+     *
+     * @return Response\Response
+     */
+    public function cancelRequest(array $data)
+    {
+        $buildData = $this->buildData(new CancelRequestDataBuilder($data));
+
+        return $this->requestExecutor->executeRequest('cancel_request', $buildData);
     }
 
     /**

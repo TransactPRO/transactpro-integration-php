@@ -137,6 +137,14 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
         $this->assertUnsuccessfulResponse($response);
     }
 
+    public function testCancelRequest()
+    {
+        $response = $this->gateClient->cancelRequest(array(
+            'init_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg'
+        ));
+        $this->assertUnsuccessfulResponse($response);
+    }
+
     public function testRefund()
     {
         $response = $this->gateClient->refund(array(
