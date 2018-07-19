@@ -20,8 +20,11 @@ class CancelRequestDataBuilderTest extends BuilderTestCase
         );
     }
 
+    public function testNonMandatoryFields($field = false, $expectedFieldValue = false)
+    {
+    }
+
     public function getNonMandatoryFields()
     {
-        return array();
     }
 }
