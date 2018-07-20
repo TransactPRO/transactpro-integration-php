@@ -14,6 +14,7 @@ use TransactPRO\Gate\Builders\DoRecurrentB2PDataBuilder;
 use TransactPRO\Gate\Builders\InitDataBuilder;
 use TransactPRO\Gate\Builders\InitDmsDataBuilder;
 use TransactPRO\Gate\Builders\InitP2PDataBuilder;
+use TransactPRO\Gate\Builders\InitB2PDataBuilder;
 use TransactPRO\Gate\Builders\ChargeB2PDataBuilder;
 use TransactPRO\Gate\Builders\InitCreditDataBuilder;
 use TransactPRO\Gate\Builders\DoP2PDataBuilder;
