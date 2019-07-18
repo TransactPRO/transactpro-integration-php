@@ -30,6 +30,8 @@ class InitDataBuilderTest extends BuilderTestCase
             'custom_return_url'       => 'http://www.example.com',
             'custom_callback_url'     => 'http://www.example.com',
             'merchant_referring_name' => 'dynamic_descriptor',
+            'use_saved_card' => '',
+            'original_init_id' => ''
         );
         $this->buildData        = $this->data;
     }
