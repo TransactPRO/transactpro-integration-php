@@ -358,7 +358,7 @@ $response = $gateClient->initStoreCardP2P(array(
     'save_card'               => '1',
     'cardname'                => 'John Doe',
     'recipient_name'          => 'Jane Doe',
-    'client_birth_date'       => '29061988',
+    'client_birth_date'       => '06291988',
 ));
 ```
 
