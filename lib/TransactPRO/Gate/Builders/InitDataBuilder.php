@@ -42,7 +42,6 @@ class InitDataBuilder extends Builder
         $this->checkMandatoryField('amount');
         $this->checkMandatoryField('currency');
         $this->checkMandatoryField('name_on_card');
-        $this->checkMandatoryField('merchant_site_url');
     }
 
     /**

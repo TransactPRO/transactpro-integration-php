@@ -237,6 +237,7 @@ $response = $gateClient->initB2P(array(
     'bin_name'                => 'BANK',
     'bin_phone'               => '+371 11111111',
     'client_birth_date'       =>  '15101970',
+    'merchant_site_url'       => 'http://www.example.com',
 ));
 ```
 

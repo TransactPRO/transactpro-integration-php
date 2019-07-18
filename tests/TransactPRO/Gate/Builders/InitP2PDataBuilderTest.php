@@ -44,7 +44,6 @@ class InitP2PDataBuilderTest extends BuilderTestCase
             array('currency'),
             array('name_on_card'),
             array('phone'),
-            array('merchant_site_url'),
             array('cardname'),
             array('recipient_name'),
             array('client_birth_date'),
