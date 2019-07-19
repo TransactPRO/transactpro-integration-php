@@ -28,7 +28,10 @@ use TransactPRO\Gate\Builders\RefundDataBuilder;
 use TransactPRO\Gate\Builders\StatusRequestDataBuilder;
 use TransactPRO\Gate\Builders\AccessDataBuilder;
 use TransactPRO\Gate\Builders\StatusRequestDataBuilderMerchantID;
+use TransactPRO\Gate\Builders\GetTerminalLimitsBuilder;
+use TransactPRO\Gate\Builders\GetPaymentDataBuilder;
 use TransactPRO\Gate\Builders\VerifyEnrollmentDataBuilder;
+use TransactPRO\Gate\Builders\VerifyCardDataBuilder;
 use TransactPRO\Gate\Request\RequestExecutor;
 use TransactPRO\Gate\Request\RequestExecutorInterface;
 
@@ -412,6 +415,7 @@ class GateClient
 
         return $response;
     }
+
     /**
      * @docReference 6.3 SUBSEQUENT RECURRENT TRANSACTIONS
      *
@@ -517,4 +521,33 @@ class GateClient
         return $response;
     }
 
+    public function getTerminalLimits(array $data)
+    {
+        $buildData = $this->buildData(new GetTerminalLimitsBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('get_terminal_limits', $buildData);
+
+        return $response;
+    }
+
+
+    public function getPaymentStatus(array $data)
+    {
+        $buildData = $this->buildData(new GetPaymentDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('transaction_get_payment_status', $buildData);
+
+        return $response;
+    }
+
+
+    /**
+     * @param array $data
+     * @return Response\Response
+     */
+    public function verifyCard(array $data)
+    {
+        $buildData = $this->buildData(new VerifyCardDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('verify_card', $buildData);
+
+        return $response;
+    }
 }
