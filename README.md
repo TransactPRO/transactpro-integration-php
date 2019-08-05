@@ -17,7 +17,7 @@ Recommended way of installation is through [composer](http://getcomposer.org/).
 Run command line command `composer require transact-pro/gate` or add to your composer.json:
 ```javascript
 "require": {
-    "transact-pro/gate": "^v1.0"
+    "transact-pro/gate": "^v1.1"
 }
 ```
 And then install with:
