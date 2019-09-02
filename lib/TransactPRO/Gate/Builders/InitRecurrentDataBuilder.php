@@ -17,6 +17,7 @@ class InitRecurrentDataBuilder extends Builder
         if (isset($this->data['merchant_referring_name'])) $data['merchant_referring_name'] = $this->getField('merchant_referring_name');
         if (isset($this->data['customer_id'])) $data['customer_id'] = $this->getField('customer_id');
         if (isset($this->data['check_saved_card'])) $data['check_saved_card'] = $this->getField('check_saved_card');
+        if (isset($this->data['currency'])) $data['currency'] = $this->getField('currency');
 
         return $data;
     }
