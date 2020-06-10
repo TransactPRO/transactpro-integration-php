@@ -11,18 +11,23 @@ use TransactPRO\Gate\Builders\ChargeRecurrentDataBuilder;
 use TransactPRO\Gate\Builders\DoRecurrentCreditDataBuilder;
 use TransactPRO\Gate\Builders\DoRecurrentP2PDataBuilder;
 use TransactPRO\Gate\Builders\DoRecurrentB2PDataBuilder;
+use TransactPRO\Gate\Builders\DoRecurrentA2ADataBuilder;
 use TransactPRO\Gate\Builders\InitDataBuilder;
 use TransactPRO\Gate\Builders\InitDmsDataBuilder;
-use TransactPRO\Gate\Builders\InitP2PDataBuilder;
-use TransactPRO\Gate\Builders\ChargeB2PDataBuilder;
 use TransactPRO\Gate\Builders\InitCreditDataBuilder;
-use TransactPRO\Gate\Builders\DoP2PDataBuilder;
+use TransactPRO\Gate\Builders\InitP2PDataBuilder;
+use TransactPRO\Gate\Builders\InitB2PDataBuilder;
+use TransactPRO\Gate\Builders\InitA2ADataBuilder;
 use TransactPRO\Gate\Builders\DoCreditDataBuilder;
-use TransactPRO\Gate\Builders\InitRecurrentCreditDataBuilder;
+use TransactPRO\Gate\Builders\DoP2PDataBuilder;
+use TransactPRO\Gate\Builders\ChargeB2PDataBuilder;
+use TransactPRO\Gate\Builders\DoA2ADataBuilder;
 use TransactPRO\Gate\Builders\InitRecurrentDataBuilder;
+use TransactPRO\Gate\Builders\InitRecurrentCreditDataBuilder;
 use TransactPRO\Gate\Builders\InitRecurrentP2PDataBuilder;
 use TransactPRO\Gate\Builders\InitRecurrentB2PDataBuilder;
-use TransactPRO\Gate\Builders\InitB2PDataBuilder;
+use TransactPRO\Gate\Builders\InitRecurrentA2ADataBuilder;
+
 use TransactPRO\Gate\Builders\MakeHoldDataBuilder;
 use TransactPRO\Gate\Builders\RefundDataBuilder;
 use TransactPRO\Gate\Builders\StatusRequestDataBuilder;
@@ -248,6 +253,29 @@ class GateClient
         return $this->requestExecutor->executeRequest('do_p2p', $buildData);
     }
 
+    /**
+     * @param array $data
+     *
+     * @return Response\Response
+     */
+    public function initA2A(array $data)
+    {
+        $buildData = $this->buildData(new InitA2ADataBuilder($data));
+
+        return $this->requestExecutor->executeRequest('init_a2a', $buildData);
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return Response\Response
+     */
+    public function doA2A(array $data)
+    {
+        $buildData = $this->buildData(new DoA2ADataBuilder($data));
+
+        return $this->requestExecutor->executeRequest('do_a2a', $buildData);
+    }
 
     /**
      * 2.1.14 B2P TRANSACTIONS
@@ -394,6 +422,34 @@ class GateClient
      *
      * @return Response\Response
      */
+    public function initRecurrentA2A(array $data)
+    {
+        $buildData = $this->buildData(new InitRecurrentA2ADataBuilder($data));
+
+        return $this->requestExecutor->executeRequest('init_recurrent_a2a', $buildData);
+    }
+
+    /**
+     * @docReference 6.3 SUBSEQUENT RECURRENT TRANSACTIONS
+     *
+     * @param array $data
+     *
+     * @return Response\Response
+     */
+    public function doRecurrentA2A(array $data)
+    {
+        $buildData = $this->buildData(new DoRecurrentA2ADataBuilder($data));
+
+        return $this->requestExecutor->executeRequest('do_recurrent_a2a', $buildData);
+    }
+
+    /**
+     * @docReference 6.3 SUBSEQUENT RECURRENT TRANSACTIONS
+     *
+     * @param array $data
+     *
+     * @return Response\Response
+     */
     public function initRecurrentB2P(array $data)
     {
         $buildData = $this->buildData(new InitRecurrentB2PDataBuilder($data));
@@ -473,6 +529,21 @@ class GateClient
     }
 
     /**
+     * @docReference 6.2 USING NOT VERIFIED ON BANK'S SIDE CARD DATA FOR RECURRENT TRANSACTIONS
+     *
+     * @param array $data
+     *
+     * @return Response\Response
+     */
+    public function initStoreCardA2A(array $data)
+    {
+        $buildData = $this->buildData(new InitA2ADataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('init_store_card_a2a', $buildData);
+
+        return $response;
+    }
+
+    /**
      * @docReference 6.3 SUBSEQUENT RECURRENT TRANSACTIONS
      *
      * @param array $data
@@ -516,5 +587,4 @@ class GateClient
 
         return $response;
     }
-
 }

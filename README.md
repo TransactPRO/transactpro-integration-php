@@ -286,6 +286,43 @@ $response = $gateClient->doCredit(array(
 ));
 ```
 
+
+#### Init A2A transactions
+```php
+$response = $gateClient->initA2A(array(
+    'rs'                      => 'AAAA',
+    'merchant_transaction_id' =>  microtime(true),
+    'user_ip'                 => '127.0.0.1',
+    'description'             => 'Test description',
+    'amount'                  => '100',
+    'currency'                => 'LVL',
+    'name_on_card'            => 'Vasyly Pupkin',
+    'street'                  => 'Main street 1',
+    'zip'                     => 'LV-0000',
+    'city'                    => 'Riga',
+    'country'                 => 'LV',
+    'state'                   => 'NA',
+    'email'                   => 'email@example.lv',
+    'phone'                   => '+371 11111111',
+    'card_bin'                => '511111',
+    'bin_name'                => 'BANK',
+    'bin_phone'               => '+371 11111111',
+    'merchant_site_url'       => 'http://www.example.com',
+    'save_card'               => '1',
+    'cardname'                => 'John Doe',
+    'client_birth_date'       => '29061988',
+));
+```
+
+#### Do A2A transactions
+```php
+$response = $gateClient->doA2A(array(
+    'f_extended'          => '5',
+    'init_transaction_id' => '13hpf5rp1e0ss72dypjnhalzn1wmrkfmsjtwzocg',
+    'cc_2'                => '5111111111111111',
+));
+```
+
 #### Init store card for further SMS transactions without card
 ```php
 $response = $gateClient->initStoreCardSms(array(
@@ -382,6 +419,9 @@ For P2P recurrent use:
 For Credit recurrent use:
 - initRecurrentP2P
 
+For Credit recurrent use:
+- initRecurrentA2A
+
 ``Fields in these requests are same, read documetation for details.``
 
 Example:
@@ -403,6 +443,9 @@ For P2P recurrent use:
 
 For Credit recurrent use:
 - doRecurrentP2P
+
+For A2A recurrent use:
+- doRecurrentA2A
 
 Example:
 ```php
