@@ -33,7 +33,10 @@ use TransactPRO\Gate\Builders\RefundDataBuilder;
 use TransactPRO\Gate\Builders\StatusRequestDataBuilder;
 use TransactPRO\Gate\Builders\AccessDataBuilder;
 use TransactPRO\Gate\Builders\StatusRequestDataBuilderMerchantID;
+use TransactPRO\Gate\Builders\GetTerminalLimitsBuilder;
+use TransactPRO\Gate\Builders\GetPaymentDataBuilder;
 use TransactPRO\Gate\Builders\VerifyEnrollmentDataBuilder;
+use TransactPRO\Gate\Builders\VerifyCardDataBuilder;
 use TransactPRO\Gate\Request\RequestExecutor;
 use TransactPRO\Gate\Request\RequestExecutorInterface;
 
@@ -84,7 +87,7 @@ class GateClient
     }
 
     /**
-     * @docReference 2.2 INITIALIZING A TRANSACTION
+     * @docReference 2.1.3 SMS (Single Message) transaction, card details entered at gateway side
      *
      * @param array $data
      *
@@ -168,7 +171,7 @@ class GateClient
     }
 
     /**
-     * @docReference 2.3 HOW TO CANCEL REQUEST
+     * @docReference 3.2.1 HOW TO CANCEL DMS HOLD WITHOUT REFUNDS
      *
      * @param array $data
      *
@@ -196,7 +199,7 @@ class GateClient
     }
 
     /**
-     * @docReference 2.5.1 REQUESTING TRANSACTION STATUS
+     * @docReference 2.5.1 TRANSACTION STATUS REQUEST
      *
      * @param array $data
      *
@@ -210,7 +213,7 @@ class GateClient
     }
 
     /**
-     * @docReference 2.5.1 REQUESTING TRANSACTION STATUS
+     * @docReference 2.5.1 TRANSACTION STATUS REQUEST
      *
      * @param array $data
      *
@@ -226,7 +229,7 @@ class GateClient
     }
 
     /**
-     * @docReference 2.1.9 P2P TRANSACTIONS
+     * @docReference 2.1.15 P2P TRANSACTIONS REQUIREMENTS ON INITIALIZATION REQUEST URL
      *
      * @param array $data
      *
@@ -240,7 +243,7 @@ class GateClient
     }
 
     /**
-     * @docReference 2.1.9 P2P TRANSACTIONS
+     * @docReference 2.1.16 P2P TRANSACTIONS REQUIREMENTS ON FINAL REQUEST URL
      *
      * @param array $data
      *
@@ -254,6 +257,8 @@ class GateClient
     }
 
     /**
+     * @docReference 2.1.19 A2A TRANSACTIONS REQUIREMENTS ON INITIALIZATION REQUEST URL
+     *
      * @param array $data
      *
      * @return Response\Response
@@ -266,6 +271,8 @@ class GateClient
     }
 
     /**
+     * @docReference 2.1.20 A2A TRANSACTIONS REQUIREMENTS ON FINAL REQUEST URL
+     *
      * @param array $data
      *
      * @return Response\Response
@@ -278,7 +285,7 @@ class GateClient
     }
 
     /**
-     * 2.1.14 B2P TRANSACTIONS
+     * 2.1.17 B2P TRANSACTIONS REQUIREMENTS ON INITIALIZATION REQUEST URL
      * @param array $data
      * @return Response\Response
      */
@@ -291,7 +298,7 @@ class GateClient
     }
 
     /**
-     * 2.1.15 B2P transactions requirements on final request URL
+     * 2.1.18 B2P TRANSACTIONS REQUIREMENTS ON FINAL REQUEST URL
      * @param array $data
      * @return Response\Response
      */
@@ -304,7 +311,7 @@ class GateClient
     }
 
     /**
-     * @docReference 2.1.7 CREDIT TRANSACTIONS
+     * @docReference 2.1.13 CRD TRANSACTIONS REQUIREMENTS ON INITIALIZATION REQUEST URL
      *
      * @param array $data
      *
@@ -318,7 +325,7 @@ class GateClient
     }
 
     /**
-     * @docReference 2.1.7 CREDIT TRANSACTIONS
+     * @docReference 2.1.14 CRD TRANSACTIONS REQUIREMENTS ON FINAL REQUEST URL
      *
      * @param array $data
      *
@@ -458,7 +465,10 @@ class GateClient
     }
 
     /**
+     * @docReference 6.3 SUBSEQUENT RECURRENT TRANSACTIONS
+     *
      * @param array $data
+     *
      * @return Response\Response
      */
     public function doRecurrentB2P(array $data)
@@ -577,6 +587,7 @@ class GateClient
     }
 
     /**
+     * @docReference 4.1 TERMINAL LIMITS
      * @param array $data
      * @return Response\Response
      */
@@ -584,6 +595,43 @@ class GateClient
     {
         $buildData = $this->buildData(new VerifyEnrollmentDataBuilder($data));
         $response  = $this->requestExecutor->executeRequest('verify_enrollment', $buildData);
+
+        return $response;
+    }
+
+    /**
+     * @docReference 4.1 TERMINAL LIMITS
+     * @param array $data
+     * @return Response\Response
+     */
+
+    public function getTerminalLimits(array $data)
+    {
+        $buildData = $this->buildData(new GetTerminalLimitsBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('get_terminal_limits', $buildData);
+
+        return $response;
+    }
+
+
+    public function getPaymentStatus(array $data)
+    {
+        $buildData = $this->buildData(new GetPaymentDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('transaction_get_payment_status', $buildData);
+
+        return $response;
+    }
+
+
+    /**
+     * @docReference 3.4 CARD VERIFICATION
+     * @param array $data
+     * @return Response\Response
+     */
+    public function verifyCard(array $data)
+    {
+        $buildData = $this->buildData(new VerifyCardDataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('verify_card', $buildData);
 
         return $response;
     }

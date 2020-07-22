@@ -29,7 +29,7 @@ class InitP2PDataBuilderTest extends BuilderTestCase
             'save_card'               => '1',
             'cardname'                => 'John DoE',
             'recipient_name'          => 'JOHN DOE',
-            'client_birth_date'       => '29061988',
+            'client_birth_date'       => '06161981',
         );
         $this->buildData        = $this->data;
     }
@@ -44,7 +44,6 @@ class InitP2PDataBuilderTest extends BuilderTestCase
             array('currency'),
             array('name_on_card'),
             array('phone'),
-            array('merchant_site_url'),
             array('cardname'),
             array('recipient_name'),
             array('client_birth_date'),

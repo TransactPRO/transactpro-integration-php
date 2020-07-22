@@ -17,7 +17,7 @@ Recommended way of installation is through [composer](http://getcomposer.org/).
 Run command line command `composer require transact-pro/gate` or add to your composer.json:
 ```javascript
 "require": {
-    "transact-pro/gate": "^v1.0"
+    "transact-pro/gate": "^v1.1"
 }
 ```
 And then install with:
@@ -202,7 +202,7 @@ $response = $gateClient->initP2P(array(
     'save_card'               => '1',
     'cardname'                => 'John Doe',
     'recipient_name'          => 'Jane Doe',
-    'client_birth_date'       => '29061988',
+    'client_birth_date'       => '06291988',
 ));
 ```
 
@@ -237,6 +237,7 @@ $response = $gateClient->initB2P(array(
     'bin_name'                => 'BANK',
     'bin_phone'               => '+371 11111111',
     'client_birth_date'       =>  '15101970',
+    'merchant_site_url'       => 'http://www.example.com',
 ));
 ```
 
@@ -395,7 +396,7 @@ $response = $gateClient->initStoreCardP2P(array(
     'save_card'               => '1',
     'cardname'                => 'John Doe',
     'recipient_name'          => 'Jane Doe',
-    'client_birth_date'       => '29061988',
+    'client_birth_date'       => '06291988',
 ));
 ```
 

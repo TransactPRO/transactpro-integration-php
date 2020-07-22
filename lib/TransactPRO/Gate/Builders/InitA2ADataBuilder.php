@@ -27,6 +27,7 @@ class InitA2ADataBuilder extends InitDataBuilder
             'merchant_site_url'       => $this->getField('merchant_site_url'),
             'save_card'               => $this->getField('save_card'),
             'cardname'                => $this->getField('cardname'),
+            'recipient_name'          => $this->getField('recipient_name'),
             'client_birth_date'       => $this->getField('client_birth_date'),
         );
     }
