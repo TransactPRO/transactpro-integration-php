@@ -19,7 +19,5 @@ class ChargeDataBuilder extends Builder
     protected function checkData()
     {
         $this->checkMandatoryField('init_transaction_id');
-        $this->checkMandatoryField('cc');
-        $this->checkMandatoryField('expire');
     }
 }

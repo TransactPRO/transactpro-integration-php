@@ -22,8 +22,6 @@ class ChargeDataBuilderTest extends BuilderTestCase
     {
         return array(
             array('init_transaction_id'),
-            array('cc'),
-            array('expire'),
         );
     }
 

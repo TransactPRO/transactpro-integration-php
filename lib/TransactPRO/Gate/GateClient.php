@@ -27,7 +27,6 @@ use TransactPRO\Gate\Builders\InitRecurrentCreditDataBuilder;
 use TransactPRO\Gate\Builders\InitRecurrentP2PDataBuilder;
 use TransactPRO\Gate\Builders\InitRecurrentB2PDataBuilder;
 use TransactPRO\Gate\Builders\InitRecurrentA2ADataBuilder;
-
 use TransactPRO\Gate\Builders\MakeHoldDataBuilder;
 use TransactPRO\Gate\Builders\RefundDataBuilder;
 use TransactPRO\Gate\Builders\StatusRequestDataBuilder;
