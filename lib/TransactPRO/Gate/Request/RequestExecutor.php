@@ -43,6 +43,7 @@ class RequestExecutor implements RequestExecutorInterface
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
         } else {
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         }
         
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postData));
