@@ -32,6 +32,5 @@ class ChargeDataBuilderTest extends BuilderTestCase
             array('merchant_referring_url'),
         );
     }
-
 }
  

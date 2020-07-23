@@ -198,7 +198,7 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
             'save_card'               => '1',
             'cardname'                => 'John DoE',
             'recipient_name'          => 'JOHN DOE',
-            'client_birth_date'       => '29061988',
+            'client_birth_date'       => '06161981',
         ));
         $this->assertUnsuccessfulResponse($response);
     }
@@ -401,7 +401,7 @@ class GateClientTest extends \PHPUnit_Framework_TestCase
             'save_card'               => '1',
             'cardname'                => 'John DoE',
             'recipient_name'          => 'JOHN DOE',
-            'client_birth_date'       => '29061988',
+            'client_birth_date'       => '06161981',
         ));
         $this->assertUnsuccessfulResponse($response);
     }

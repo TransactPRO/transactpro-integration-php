@@ -11,18 +11,22 @@ use TransactPRO\Gate\Builders\ChargeRecurrentDataBuilder;
 use TransactPRO\Gate\Builders\DoRecurrentCreditDataBuilder;
 use TransactPRO\Gate\Builders\DoRecurrentP2PDataBuilder;
 use TransactPRO\Gate\Builders\DoRecurrentB2PDataBuilder;
+use TransactPRO\Gate\Builders\DoRecurrentA2ADataBuilder;
 use TransactPRO\Gate\Builders\InitDataBuilder;
 use TransactPRO\Gate\Builders\InitDmsDataBuilder;
-use TransactPRO\Gate\Builders\InitP2PDataBuilder;
-use TransactPRO\Gate\Builders\ChargeB2PDataBuilder;
 use TransactPRO\Gate\Builders\InitCreditDataBuilder;
-use TransactPRO\Gate\Builders\DoP2PDataBuilder;
+use TransactPRO\Gate\Builders\InitP2PDataBuilder;
+use TransactPRO\Gate\Builders\InitB2PDataBuilder;
+use TransactPRO\Gate\Builders\InitA2ADataBuilder;
 use TransactPRO\Gate\Builders\DoCreditDataBuilder;
-use TransactPRO\Gate\Builders\InitRecurrentCreditDataBuilder;
+use TransactPRO\Gate\Builders\DoP2PDataBuilder;
+use TransactPRO\Gate\Builders\ChargeB2PDataBuilder;
+use TransactPRO\Gate\Builders\DoA2ADataBuilder;
 use TransactPRO\Gate\Builders\InitRecurrentDataBuilder;
+use TransactPRO\Gate\Builders\InitRecurrentCreditDataBuilder;
 use TransactPRO\Gate\Builders\InitRecurrentP2PDataBuilder;
 use TransactPRO\Gate\Builders\InitRecurrentB2PDataBuilder;
-use TransactPRO\Gate\Builders\InitB2PDataBuilder;
+use TransactPRO\Gate\Builders\InitRecurrentA2ADataBuilder;
 use TransactPRO\Gate\Builders\MakeHoldDataBuilder;
 use TransactPRO\Gate\Builders\RefundDataBuilder;
 use TransactPRO\Gate\Builders\StatusRequestDataBuilder;
@@ -82,7 +86,7 @@ class GateClient
     }
 
     /**
-     * @docReference 2.2 INITIALIZING A TRANSACTION
+     * @docReference 2.1.3 SMS (Single Message) transaction, card details entered at gateway side
      *
      * @param array $data
      *
@@ -166,7 +170,7 @@ class GateClient
     }
 
     /**
-     * @docReference 2.3 HOW TO CANCEL REQUEST
+     * @docReference 3.2.1 HOW TO CANCEL DMS HOLD WITHOUT REFUNDS
      *
      * @param array $data
      *
@@ -194,7 +198,7 @@ class GateClient
     }
 
     /**
-     * @docReference 2.5.1 REQUESTING TRANSACTION STATUS
+     * @docReference 2.5.1 TRANSACTION STATUS REQUEST
      *
      * @param array $data
      *
@@ -208,7 +212,7 @@ class GateClient
     }
 
     /**
-     * @docReference 2.5.1 REQUESTING TRANSACTION STATUS
+     * @docReference 2.5.1 TRANSACTION STATUS REQUEST
      *
      * @param array $data
      *
@@ -224,7 +228,7 @@ class GateClient
     }
 
     /**
-     * @docReference 2.1.9 P2P TRANSACTIONS
+     * @docReference 2.1.15 P2P TRANSACTIONS REQUIREMENTS ON INITIALIZATION REQUEST URL
      *
      * @param array $data
      *
@@ -238,7 +242,7 @@ class GateClient
     }
 
     /**
-     * @docReference 2.1.9 P2P TRANSACTIONS
+     * @docReference 2.1.16 P2P TRANSACTIONS REQUIREMENTS ON FINAL REQUEST URL
      *
      * @param array $data
      *
@@ -251,9 +255,36 @@ class GateClient
         return $this->requestExecutor->executeRequest('do_p2p', $buildData);
     }
 
+    /**
+     * @docReference 2.1.19 A2A TRANSACTIONS REQUIREMENTS ON INITIALIZATION REQUEST URL
+     *
+     * @param array $data
+     *
+     * @return Response\Response
+     */
+    public function initA2A(array $data)
+    {
+        $buildData = $this->buildData(new InitA2ADataBuilder($data));
+
+        return $this->requestExecutor->executeRequest('init_a2a', $buildData);
+    }
 
     /**
-     * 2.1.14 B2P TRANSACTIONS
+     * @docReference 2.1.20 A2A TRANSACTIONS REQUIREMENTS ON FINAL REQUEST URL
+     *
+     * @param array $data
+     *
+     * @return Response\Response
+     */
+    public function doA2A(array $data)
+    {
+        $buildData = $this->buildData(new DoA2ADataBuilder($data));
+
+        return $this->requestExecutor->executeRequest('do_a2a', $buildData);
+    }
+
+    /**
+     * 2.1.17 B2P TRANSACTIONS REQUIREMENTS ON INITIALIZATION REQUEST URL
      * @param array $data
      * @return Response\Response
      */
@@ -266,7 +297,7 @@ class GateClient
     }
 
     /**
-     * 2.1.15 B2P transactions requirements on final request URL
+     * 2.1.18 B2P TRANSACTIONS REQUIREMENTS ON FINAL REQUEST URL
      * @param array $data
      * @return Response\Response
      */
@@ -279,7 +310,7 @@ class GateClient
     }
 
     /**
-     * @docReference 2.1.7 CREDIT TRANSACTIONS
+     * @docReference 2.1.13 CRD TRANSACTIONS REQUIREMENTS ON INITIALIZATION REQUEST URL
      *
      * @param array $data
      *
@@ -293,7 +324,7 @@ class GateClient
     }
 
     /**
-     * @docReference 2.1.7 CREDIT TRANSACTIONS
+     * @docReference 2.1.14 CRD TRANSACTIONS REQUIREMENTS ON FINAL REQUEST URL
      *
      * @param array $data
      *
@@ -397,6 +428,34 @@ class GateClient
      *
      * @return Response\Response
      */
+    public function initRecurrentA2A(array $data)
+    {
+        $buildData = $this->buildData(new InitRecurrentA2ADataBuilder($data));
+
+        return $this->requestExecutor->executeRequest('init_recurrent_a2a', $buildData);
+    }
+
+    /**
+     * @docReference 6.3 SUBSEQUENT RECURRENT TRANSACTIONS
+     *
+     * @param array $data
+     *
+     * @return Response\Response
+     */
+    public function doRecurrentA2A(array $data)
+    {
+        $buildData = $this->buildData(new DoRecurrentA2ADataBuilder($data));
+
+        return $this->requestExecutor->executeRequest('do_recurrent_a2a', $buildData);
+    }
+
+    /**
+     * @docReference 6.3 SUBSEQUENT RECURRENT TRANSACTIONS
+     *
+     * @param array $data
+     *
+     * @return Response\Response
+     */
     public function initRecurrentB2P(array $data)
     {
         $buildData = $this->buildData(new InitRecurrentB2PDataBuilder($data));
@@ -405,7 +464,10 @@ class GateClient
     }
 
     /**
+     * @docReference 6.3 SUBSEQUENT RECURRENT TRANSACTIONS
+     *
      * @param array $data
+     *
      * @return Response\Response
      */
     public function doRecurrentB2P(array $data)
@@ -415,7 +477,6 @@ class GateClient
 
         return $response;
     }
-
     /**
      * @docReference 6.3 SUBSEQUENT RECURRENT TRANSACTIONS
      *
@@ -477,6 +538,21 @@ class GateClient
     }
 
     /**
+     * @docReference 6.2 USING NOT VERIFIED ON BANK'S SIDE CARD DATA FOR RECURRENT TRANSACTIONS
+     *
+     * @param array $data
+     *
+     * @return Response\Response
+     */
+    public function initStoreCardA2A(array $data)
+    {
+        $buildData = $this->buildData(new InitA2ADataBuilder($data));
+        $response  = $this->requestExecutor->executeRequest('init_store_card_a2a', $buildData);
+
+        return $response;
+    }
+
+    /**
      * @docReference 6.3 SUBSEQUENT RECURRENT TRANSACTIONS
      *
      * @param array $data
@@ -510,6 +586,7 @@ class GateClient
     }
 
     /**
+     * @docReference 4.1 TERMINAL LIMITS
      * @param array $data
      * @return Response\Response
      */
@@ -520,6 +597,12 @@ class GateClient
 
         return $response;
     }
+
+    /**
+     * @docReference 4.1 TERMINAL LIMITS
+     * @param array $data
+     * @return Response\Response
+     */
 
     public function getTerminalLimits(array $data)
     {
@@ -540,6 +623,7 @@ class GateClient
 
 
     /**
+     * @docReference 3.4 CARD VERIFICATION
      * @param array $data
      * @return Response\Response
      */
