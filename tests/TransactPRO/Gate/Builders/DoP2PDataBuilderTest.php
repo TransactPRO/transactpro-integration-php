@@ -13,6 +13,7 @@ class DoP2PDataBuilderTest extends BuilderTestCase
             'cc_2'                      => '5111111111111111',
             'expire2'                   => '111',
             'merchant_referring_url'    => 'http://www.paymentform.example.com',
+            'payment_purpose'           => '01',
         );
         $this->buildData    = $this->data;
     }
