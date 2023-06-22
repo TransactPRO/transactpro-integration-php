@@ -38,8 +38,6 @@ class InitP2PDataBuilder extends InitDataBuilder
         $this->checkMandatoryField('merchant_transaction_id');
         $this->checkMandatoryField('description');
         $this->checkMandatoryField('amount');
-        $this->checkMandatoryField('currency');
-        $this->checkMandatoryField('name_on_card');
         $this->checkMandatoryField('phone');
         $this->checkMandatoryField('cardname');
         $this->checkMandatoryField('recipient_name');

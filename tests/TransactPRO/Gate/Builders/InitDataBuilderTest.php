@@ -43,8 +43,6 @@ class InitDataBuilderTest extends BuilderTestCase
             array('merchant_transaction_id'),
             array('description'),
             array('amount'),
-            array('currency'),
-            array('name_on_card'),
         );
     }
 

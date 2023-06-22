@@ -37,8 +37,6 @@ class InitA2ADataBuilder extends InitDataBuilder
         $this->checkMandatoryField('rs');
         $this->checkMandatoryField('merchant_transaction_id');
         $this->checkMandatoryField('amount');
-        $this->checkMandatoryField('currency');
-        $this->checkMandatoryField('name_on_card');
         $this->checkMandatoryField('client_birth_date');
     }
 }
